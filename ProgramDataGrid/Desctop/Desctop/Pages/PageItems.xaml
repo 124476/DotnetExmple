@@ -1,0 +1,87 @@
+﻿<Page x:Class="Desctop.Pages.PageItems"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desctop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageItems">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="ListItems" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Опубликован" Binding="{Binding IsPublished}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Count}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat='dd/MM/yyyy'}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время" Binding="{Binding TimeStart}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Картинка">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image}" Width="100" Height="100"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Файл">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnDownload" Click="BtnDownload_Click" Width="150" IsEnabled="{Binding IsFile}">Скачать</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnEdit" Click="BtnEdit_Click" Width="150">Редактировать</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnDelete" Background="Red" Click="BtnDelete_Click" Width="150">Удалить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ScrollViewer Grid.Column="1" Width="200">
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBlock>Название</TextBlock>
+                <TextBox Text="{Binding Name}"></TextBox>
+                <TextBlock>Цена</TextBlock>
+                <TextBox Text="{Binding Price}"></TextBox>
+                <TextBlock>Количество</TextBlock>
+                <TextBox Text="{Binding Count}"></TextBox>
+                <TextBlock>Дата</TextBlock>
+                <DatePicker SelectedDate="{Binding DateStart}"></DatePicker>
+
+                <TextBlock>Время</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="ComboHours" Width="70" SelectionChanged="ComboHours_SelectionChanged"></ComboBox>
+                    <TextBlock Text="  :  "></TextBlock>
+                    <ComboBox Name="ComboMinutes" Width="70" SelectionChanged="ComboMinutes_SelectionChanged"></ComboBox>
+                </StackPanel>
+
+                <TextBlock>Описание</TextBlock>
+                <TextBox Text="{Binding Description}" AcceptsReturn="True" Height="60" TextWrapping="Wrap"></TextBox>
+
+                <CheckBox IsChecked="{Binding IsPublished}" Margin="0,10">Опубликован</CheckBox>
+
+                <Image Source="{Binding Image}" Width="150" Height="150"></Image>
+                <Button Name="BtnUplode" Click="BtnUplode_Click">Загрузить фото</Button>
+
+                <Button x:Name="BtnFileUplode" Click="BtnFileUplode_Click">Загрузить файл</Button>
+
+                <Button Name="BtnSave" Click="BtnSave_Click" Margin="0,10">Сохранить</Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

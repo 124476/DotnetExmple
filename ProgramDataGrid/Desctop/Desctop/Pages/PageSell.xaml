@@ -1,0 +1,39 @@
+﻿<Page x:Class="Desctop.Pages.PageSell"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desctop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageSell">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="10">Начало:</TextBlock>
+            <DatePicker Name="DateStart" Margin="0,10" SelectedDateChanged="DateStart_SelectedDateChanged"></DatePicker>
+            <TextBlock Margin="10">Конец:</TextBlock>
+            <DatePicker Name="DateEnd" Margin="0,10" SelectedDateChanged="DateEnd_SelectedDateChanged"></DatePicker>
+            <TextBlock Margin="10">Поиск</TextBlock>
+            <TextBox Name="TextSearch" Margin="10" TextChanged="TextSearch_TextChanged" Width="200"></TextBox>
+        </StackPanel>
+        <DataGrid Name="ListItems" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat='dd/MM/yyyy'}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Картинка">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Image}" Width="100" Height="100"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
