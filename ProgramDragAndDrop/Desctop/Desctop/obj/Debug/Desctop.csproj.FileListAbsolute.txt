@@ -1,0 +1,16 @@
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\bin\Debug\Desctop.exe.config
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\bin\Debug\Desctop.exe
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\bin\Debug\Desctop.pdb
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.csproj.AssemblyReference.cache
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\MainWindow.g.cs
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\App.g.cs
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop_MarkupCompile.cache
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop_MarkupCompile.lref
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\App.baml
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\MainWindow.baml
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.g.resources
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.Properties.Resources.resources
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.csproj.GenerateResource.cache
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.csproj.CoreCompileInputs.cache
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.exe
+C:\Users\art82\source\repos\WPFExmple\ProgramDragAndDrop\Desctop\Desctop\obj\Debug\Desctop.pdb
