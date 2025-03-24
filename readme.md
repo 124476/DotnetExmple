@@ -3,35 +3,38 @@
 
 ## Проекты
 
-1. **[Генеративные элементы](ProgramGenerate/readme.md)**  
+1. **[Генеративные элементы](Programs/ProgramGeneration/readme.md)**  
    Генеративные элементы
 
-2. **[Работа с Excel](ProgramExcel/readme.md)**  
+2. **[Работа с Excel](Programs/ProgramExcel/readme.md)**  
    Импорт и экспорт Excel
 
-3. **[Работа с разными форматами файлов](ProgramFormat/readme.md)**  
+3. **[Работа с разными форматами файлов](Programs/ProgramFormat/readme.md)**  
    Импорт и экспорт файлов xml, json, txt, csv
 
-4. **[Графики](ProgramGrafik/readme.md)**  
+4. **[Графики](Programs/ProgramCharts/readme.md)**  
    Создание линейного, столбчетого и круглой диаграммы
 
-5. **[Локальная база данных](ProgramLocalDB/readme.md)**  
-   Независимая программа, везде можно запустить exe, а также база данных уже имеет заполненные данные в программе
+5. **[Дата грид](Programs/ProgramDataGrid/readme.md)**  
+   Дата грид, работа с разными данными, фильтрация
 
-6. **[QR-код](ProgramQrCode/readme.md)**  
+6. **[QR-код](Programs/ProgramQrCode/readme.md)**  
    Создание, чтение и сохранение qr-кода
 
-7. **[Word](ProgramWord/readme.md)**  
+7. **[Работа с Word](Programs/ProgramWord/readme.md)**  
    Импорт и экспорт Word
 
-8. **[Files](ProgramFiles/readme.md)**  
+8. **[Files](Programs/ProgramFiles/readme.md)**  
    Скриншот, pdf-файлы создание, копирование файлов
 
-9. **[Regex](ProgramRegex/readme.md)**  
+9. **[Regex](Programs/ProgramRegex/readme.md)**  
    Регулярные выражения
 
-10. **[ExamleNTO](ProgramExamleNTO/readme.md)**  
-   Пример программы для НТО "Автоматизация бизнес-процессов"
+10. **[DragAndDrop](Programs/ProgramDragAndDrop/readme.md)**  
+   Перетаскивание объектов
+
+10. **[Прикольные штуки](Programs/ProgramPrikol/readme.md)**  
+   Slider, TreeView, Settings.Default и другие
 
 ## Важные технологии
 
