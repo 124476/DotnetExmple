@@ -47,6 +47,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="150" />
           <Property Name="Password" Type="nvarchar" MaxLength="150" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="UserItems">
           <Key>
@@ -65,6 +66,18 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User1" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -102,6 +115,10 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserItems_Item" Association="Self.FK_UserItems_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="UserItems" EntitySet="UserItems" />
@@ -128,6 +145,10 @@
           <AssociationSet Name="FK_User_Role" Association="WPFExmpleDataBaseModel.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="WPFExmpleDataBaseModel.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_UserItems_User" Association="WPFExmpleDataBaseModel.FK_UserItems_User">
             <End Role="User" EntitySet="User" />
@@ -178,7 +199,10 @@
           <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
           <NavigationProperty Name="Role" Relationship="WPFExmpleDataBaseModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="User1" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User1" ToRole="User" />
           <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="User" ToRole="UserItems" />
         </EntityType>
         <EntityType Name="UserItems">
@@ -212,6 +236,18 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WPFExmpleDataBaseModel.User" Role="User1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -272,6 +308,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />

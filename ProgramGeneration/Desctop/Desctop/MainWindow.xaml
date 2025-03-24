@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desctop"
         mc:Ignorable="d"
-        Title="Charts" Height="450" Width="800"
+        Title="Generation" Height="450" Width="800"
         MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,9 +13,10 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center" Width="200">
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
+            <Button x:Name="BtnCalendar" Margin="10" Click="BtnCalendar_Click">Календарь</Button>
+            <Button x:Name="BtnSchedule" Margin="10" Click="BtnSchedule_Click">Расписание</Button>
+            <Button x:Name="BtnTree" Margin="10" Click="BtnTree_Click">Дерево</Button>
+            <Button x:Name="BtnGanta" Margin="10" Click="BtnGanta_Click">Диаграмма Ганта</Button>
         </StackPanel>
         <Frame Name="MyFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

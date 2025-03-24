@@ -21,7 +21,7 @@
             <TextBlock Margin="10">Поиск</TextBlock>
             <TextBox Name="TextSearch" Margin="10" TextChanged="TextSearch_TextChanged" Width="200"></TextBox>
         </StackPanel>
-        <DataGrid Name="ListItems" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="ListItems" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat='dd/MM/yyyy'}"></DataGridTextColumn>

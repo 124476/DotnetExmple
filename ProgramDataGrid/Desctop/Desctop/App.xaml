@@ -24,6 +24,8 @@
         </Style>
         <Style TargetType="DataGrid">
             <Setter Property="FontSize" Value="17"></Setter>
+            <Setter Property="AutoGenerateColumns" Value="false"></Setter>
+            <Setter Property="IsReadOnly" Value="true"></Setter>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="17"></Setter>

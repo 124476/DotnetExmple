@@ -91,6 +91,9 @@ namespace Desctop.Pages
             ListUsers.ItemsSource = null;
             ListUsers.ItemsSource = App.DB.User.ToList();
 
+            ComboUsers.ItemsSource = null;
+            ComboUsers.ItemsSource = App.DB.User.Where(x => x.Id != contextUser.Id).ToList();
+
             RefreshItems();
         }
 

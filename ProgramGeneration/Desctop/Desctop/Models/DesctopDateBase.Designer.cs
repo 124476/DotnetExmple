@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\art82\source\repos\WPFExmple\ProgramCharts\Desctop\Desctop\Models\DesctopDateBase.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\art82\source\repos\WPFExmple\ProgramGeneration\Desctop\Desctop\Models\DesctopDateBase.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

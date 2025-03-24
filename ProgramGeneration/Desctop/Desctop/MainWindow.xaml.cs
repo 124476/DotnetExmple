@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgramGenerate.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,27 @@ namespace Desctop
         public MainWindow()
         {
             InitializeComponent();
+            MyFrame.Navigate(new PageCalendar());
+        }
+
+        private void BtnCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageCalendar());
+        }
+
+        private void BtnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageSchedule());
+        }
+
+        private void BtnTree_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageTree());
+        }
+
+        private void BtnGanta_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageGanta());
         }
     }
 }

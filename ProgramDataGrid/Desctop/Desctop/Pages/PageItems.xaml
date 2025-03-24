@@ -13,7 +13,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="ListItems" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="ListItems">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Опубликован" Binding="{Binding IsPublished}"></DataGridTextColumn>

@@ -9,7 +9,7 @@
       Title="PageRoles">
 
     <Grid>
-        <DataGrid Name="ListRoles" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="ListRoles">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
             </DataGrid.Columns>

@@ -13,11 +13,12 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="ListUsers" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="ListUsers">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Начальник" Binding="{Binding User2.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Предметы" Binding="{Binding Items}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -46,6 +47,9 @@
                 <TextBlock>Роль</TextBlock>
                 <ComboBox Name="ComboRoles" DisplayMemberPath="Name" SelectedItem="{Binding Role}"></ComboBox>
 
+                <TextBlock>Начальник</TextBlock>
+                <ComboBox Name="ComboUsers" DisplayMemberPath="Name" SelectedItem="{Binding User2}"></ComboBox>
+                
                 <TextBlock>Предметы</TextBlock>
                 <ListView Name="ListItems">
                     <ListView.ItemTemplate>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище WPFExmpleDataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище WPFExmpleDataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,6 +47,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="150" />
           <Property Name="Password" Type="nvarchar" MaxLength="150" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="UserItems">
           <Key>
@@ -65,6 +66,18 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User1" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -102,6 +115,10 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserItems_Item" Association="Self.FK_UserItems_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="UserItems" EntitySet="UserItems" />
@@ -111,11 +128,33 @@
             <End Role="UserItems" EntitySet="UserItems" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WPFExmpleDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WPFExmpleDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Item" EntityType="WPFExmpleDataBaseModel.Item" />
+          <EntitySet Name="Role" EntityType="WPFExmpleDataBaseModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="WPFExmpleDataBaseModel.sysdiagrams" />
+          <EntitySet Name="User" EntityType="WPFExmpleDataBaseModel.User" />
+          <EntitySet Name="UserItems" EntityType="WPFExmpleDataBaseModel.UserItems" />
+          <AssociationSet Name="FK_UserItems_Item" Association="WPFExmpleDataBaseModel.FK_UserItems_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="UserItems" EntitySet="UserItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="WPFExmpleDataBaseModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="WPFExmpleDataBaseModel.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserItems_User" Association="WPFExmpleDataBaseModel.FK_UserItems_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserItems" EntitySet="UserItems" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="Id" />
@@ -131,7 +170,7 @@
           <Property Name="DateStart" Type="DateTime" Precision="0" />
           <Property Name="TimeStart" Type="Time" Precision="7" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserItems" Relationship="Self.FK_UserItems_Item" FromRole="Item" ToRole="UserItems" />
+          <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="Item" ToRole="UserItems" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -139,13 +178,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="WPFExmpleDataBaseModel.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -160,8 +199,11 @@
           <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="UserItems" Relationship="Self.FK_UserItems_User" FromRole="User" ToRole="UserItems" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="WPFExmpleDataBaseModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="User1" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="User" ToRole="UserItems" />
         </EntityType>
         <EntityType Name="UserItems">
           <Key>
@@ -170,12 +212,12 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="Item" Type="Int32" />
-          <NavigationProperty Name="Item1" Relationship="Self.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserItems_User" FromRole="UserItems" ToRole="User" />
+          <NavigationProperty Name="Item1" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
+          <NavigationProperty Name="User" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="UserItems" ToRole="User" />
         </EntityType>
         <Association Name="FK_UserItems_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+          <End Type="WPFExmpleDataBaseModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="WPFExmpleDataBaseModel.UserItems" Role="UserItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="Id" />
@@ -186,8 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="WPFExmpleDataBaseModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -197,9 +239,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_User">
+          <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WPFExmpleDataBaseModel.User" Role="User1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserItems_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+          <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WPFExmpleDataBaseModel.UserItems" Role="UserItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -209,26 +263,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WPFExmpleDataBaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Item" EntityType="Self.Item" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserItems" EntityType="Self.UserItems" />
-          <AssociationSet Name="FK_UserItems_Item" Association="Self.FK_UserItems_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="UserItems" EntitySet="UserItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserItems_User" Association="Self.FK_UserItems_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserItems" EntitySet="UserItems" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -237,56 +272,57 @@
           <EntitySetMapping Name="Item">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.Item">
               <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Doc" ColumnName="Doc" />
-                <ScalarProperty Name="DocFormat" ColumnName="DocFormat" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DocFormat" ColumnName="DocFormat" />
+                <ScalarProperty Name="Doc" ColumnName="Doc" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserItems">
             <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.UserItems">
               <MappingFragment StoreEntitySet="UserItems">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
