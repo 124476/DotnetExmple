@@ -1,0 +1,35 @@
+﻿<Window x:Class="Desctop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desctop"
+        mc:Ignorable="d"
+        Title="Prikol" Height="450" Width="800"
+        MinHeight="450" MinWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Width="200">
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <Button x:Name="BtnSlider" Click="BtnSlider_Click" Margin="0,10">Slider</Button>
+                <Button x:Name="BtnSettingsDefault" Click="BtnSettingsDefault_Click" Margin="0,10">Settings.Default</Button>
+                <Button x:Name="BtnTreeView" Click="BtnTreeView_Click" Margin="0,10">TreeView</Button>
+                <Button x:Name="BtnPhoto" Click="BtnPhoto_Click" Margin="0,10">Редакт. фото</Button>
+                <Button x:Name="BtnPalitra" Click="BtnPalitra_Click" Margin="0,10">Палитра</Button>
+                <Button x:Name="BtnHyperLink" Click="BtnHyperLink_Click" Margin="0,10">HyperLink</Button>
+                <Button x:Name="BtnRandom" Click='BtnRandom_Click' Margin="0,10">Random</Button>
+                <Button x:Name="BtnVersion" Click="BtnVersion_Click" Margin="0,10">Версия программы</Button>
+                <Button x:Name="BtnQuestion" Click="BtnQuestion_Click" Margin="0,10">Вопрос</Button>
+                <Button x:Name="BtnEmail" Click="BtnEmail_Click" Margin="0,10">Email</Button>
+                <Button x:Name="BtnVideo" Click="BtnVideo_Click" Margin="0,10">Видео</Button>
+                <Button x:Name="BtnCopyPast" Click="BtnCopyPast_Click" Margin="0,10">Копипаст</Button>
+                <Button x:Name="BtnToolTip" Click="BtnToolTip_Click" Margin="0,10">Наведение</Button>
+                <Button x:Name="BtnHech" Click="BtnHech_Click" Margin="0,10">Хеширование</Button>
+            </StackPanel>
+        </ScrollViewer>
+        <Frame Name="MyFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Window>

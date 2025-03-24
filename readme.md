@@ -67,16 +67,25 @@ private void App_DispatcherUnhandledException(object sender, System.Windows.Thre
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="17"></Setter>
     </Style>
+    <Style TargetType="DatePicker">
+        <Setter Property="FontSize" Value="17"></Setter>
+    </Style>
     <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="17"></Setter>
+    </Style>
+    <Style TargetType="ComboBox">
+        <Setter Property="FontSize" Value="17"></Setter>
+    </Style>
+    <Style TargetType="ListView">
+        <Setter Property="FontSize" Value="17"></Setter>
+    </Style>
+    <Style TargetType="CheckBox">
         <Setter Property="FontSize" Value="17"></Setter>
     </Style>
     <Style TargetType="DataGrid">
         <Setter Property="FontSize" Value="17"></Setter>
         <Setter Property="AutoGenerateColumns" Value="false"></Setter>
         <Setter Property="IsReadOnly" Value="true"></Setter>
-    </Style>
-    <Style TargetType="ComboBox">
-        <Setter Property="FontSize" Value="17"></Setter>
     </Style>
     <Style TargetType="Button">
         <Setter Property="FontSize" Value="17"></Setter>
