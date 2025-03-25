@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,17 @@ namespace Desctop.Pages
         public PageHech()
         {
             InitializeComponent();
+        }
+        public static string HashPassword(string password, string salt)
+        {
+            var pbkdf2 = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt), 10000);
+            byte[] hash = pbkdf2.GetBytes(32);
+            return Convert.ToBase64String(hash);
+        }
+
+        private void BtnHech_Click(object sender, RoutedEventArgs e)
+        {
+            TextHech.Text = HashPassword(TextText.Text, "g24g4h635w45tewtgery452y"); // Соль, состоящие более чем из 8 символов
         }
     }
 }

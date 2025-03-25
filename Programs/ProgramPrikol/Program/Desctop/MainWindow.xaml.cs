@@ -97,5 +97,10 @@ namespace Desctop
         {
             MyFrame.Navigate(new PageHech());
         }
+
+        private void BtnToast_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageToast());
+        }
     }
 }

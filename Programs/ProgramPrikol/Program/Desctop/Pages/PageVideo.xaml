@@ -9,6 +9,16 @@
       Title="PageVideo">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <MediaElement Name="VideoPlayer" LoadedBehavior="Manual"></MediaElement>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="BtnUplode" Margin="10" Width="100" Click="BtnUplode_Click">Загрузить</Button>
+            <Button x:Name="BtnStart" Margin="10" Width="100" Click="BtnStart_Click">Запустить</Button>
+            <Button x:Name="BtnPouse" Margin="10" Width="100" Click="BtnPouse_Click">Паузка</Button>
+            <Button x:Name="BtnStop" Margin="10" Width="100" Click="BtnStop_Click">Стоп</Button>
+        </StackPanel>
     </Grid>
 </Page>

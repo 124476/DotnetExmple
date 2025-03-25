@@ -9,6 +9,11 @@
       Title="PagePalitra">
 
     <Grid>
-        
+        <StackPanel Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>Цвет</TextBlock>
+            <TextBlock Name="TextColor"></TextBlock>
+            <TextBox Name="TextBoxColor" TextChanged="TextBoxColor_TextChanged">#000000</TextBox>
+            <Button Name="BtnGetColor" Click="BtnGetColor_Click">Палитра</Button>
+        </StackPanel>
     </Grid>
 </Page>

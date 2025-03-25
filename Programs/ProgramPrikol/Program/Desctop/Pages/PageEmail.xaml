@@ -9,6 +9,13 @@
       Title="PageEmail">
 
     <Grid>
-        
+        <StackPanel Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Email to" FontSize="17"></TextBlock>
+            <TextBox x:Name="EmailTo" FontSize="17"></TextBox>
+            <TextBlock Text="File" FontSize="17"></TextBlock>
+            <TextBlock x:Name="FileDoc" FontSize="17"></TextBlock>
+            <Button x:Name="SetFile" FontSize="17" Click="SetFile_Click"  Content="Загрузить" Background="White"></Button>
+            <Button x:Name="SendBtn" FontSize="17" Click="SendBtn_Click" Content="Отправить" Background="White" Margin="0,10,0,0"></Button>
+        </StackPanel>
     </Grid>
 </Page>

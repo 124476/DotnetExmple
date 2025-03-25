@@ -42,3 +42,7 @@ C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.csproj.CoreCompileInputs.cache
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.exe
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.pdb
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageToast.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageToast.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Windows\WindowPalitra.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Windows\WindowPalitra.baml

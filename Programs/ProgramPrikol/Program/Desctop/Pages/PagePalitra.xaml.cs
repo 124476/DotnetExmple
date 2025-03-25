@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desctop.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace Desctop.Pages
         public PagePalitra()
         {
             InitializeComponent();
+
+            TextColor.Background = (Brush)(new BrushConverter().ConvertFromString("#000000"));
+        }
+
+        private void TextBoxColor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                TextColor.Background = (Brush)(new BrushConverter().ConvertFromString(TextBoxColor.Text));
+            }
+            catch { }
+        }
+
+        private void BtnGetColor_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new WindowPalitra();
+            if (dialog.ShowDialog().GetValueOrDefault())
+                TextBoxColor.Text = App.Color.Name;
         }
     }
 }
