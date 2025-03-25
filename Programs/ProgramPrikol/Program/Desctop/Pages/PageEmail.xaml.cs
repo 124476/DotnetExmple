@@ -49,7 +49,7 @@ namespace Desctop.Pages
 
                 try
                 {
-                    using (MemoryStream ms = new MemoryStream(data))
+                    using (MemoryStream ms = new MemoryStream(data)) // Добавление файла к письму
                     {
                         var data = new Attachment(ms, filename);
                         message.Attachments.Add(data);
