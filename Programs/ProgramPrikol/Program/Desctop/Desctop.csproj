@@ -59,6 +59,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ColorPalitra.cs" />
+    <Compile Include="Pages\PageGotPath.xaml.cs">
+      <DependentUpon>PageGotPath.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowPalitra.xaml.cs">
       <DependentUpon>WindowPalitra.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageGotPath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -46,3 +46,5 @@ C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageToast.baml
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Windows\WindowPalitra.g.cs
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Windows\WindowPalitra.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageGotPath.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageGotPath.baml

@@ -158,3 +158,11 @@ using (var ms = new MemoryStream())
 }
 ```
 
+## FolderBrowserDialog
+
+```
+var dialog = new FolderBrowserDialog();
+if (dialog.ShowDialog() == DialogResult.OK)
+    TextPath.Text = dialog.SelectedPath;
+```
+

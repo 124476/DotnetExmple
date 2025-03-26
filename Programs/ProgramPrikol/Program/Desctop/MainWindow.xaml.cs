@@ -102,5 +102,10 @@ namespace Desctop
         {
             MyFrame.Navigate(new PageToast());
         }
+
+        private void BtnGotPath_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageGotPath());
+        }
     }
 }

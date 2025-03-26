@@ -29,6 +29,7 @@
                 <Button x:Name="BtnToolTip" Click="BtnToolTip_Click" Margin="0,10">Наведение</Button>
                 <Button x:Name="BtnHech" Click="BtnHech_Click" Margin="0,10">Хэширование</Button>
                 <Button x:Name="BtnToast" Click="BtnToast_Click"  Margin="0,10">Уведомления</Button>
+                <Button x:Name="BtnGotPath" Click="BtnGotPath_Click" Margin="0,10">FolderBrowserDialog</Button>
             </StackPanel>
         </ScrollViewer>
         <Frame Name="MyFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
