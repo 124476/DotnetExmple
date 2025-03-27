@@ -33,10 +33,10 @@
 10. **[DragAndDrop](Programs/ProgramDragAndDrop/readme.md)**  
    Перетаскивание объектов
 
-10. **[Прикольные штуки](Programs/ProgramPrikol/readme.md)**  
+11. **[Прикольные штуки](Programs/ProgramPrikol/readme.md)**  
    Slider, TreeView, Settings.Default и другие
 
-11. **[Модульное тестирование](Programs/ProgramUnitTest/readme.md)**  
+12. **[Модульное тестирование](Programs/ProgramUnitTest/readme.md)**  
    Модульное тестирование функиций
 
 ## Важные технологии
