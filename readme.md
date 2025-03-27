@@ -36,6 +36,9 @@
 10. **[Прикольные штуки](Programs/ProgramPrikol/readme.md)**  
    Slider, TreeView, Settings.Default и другие
 
+11. **[Модульное тестирование](Programs/ProgramUnitTest/readme.md)**  
+   Модульное тестирование функиций
+
 ## Важные технологии
 
 ### Минимальный размер

@@ -25,16 +25,21 @@ namespace Desctop.Pages
             InitializeComponent();
         }
 
-        private void BtnRandom_Click(object sender, RoutedEventArgs e)
+        public static string GenerateRandomPassword()
         {
             var random = new Random();
-            var text = ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString()
+            var randomPassword = ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString()
                 + ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString()
                 + ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString()
                 + ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString()
                 + ((char)random.Next('A', 'Z' + 1)).ToString() + ((char)random.Next('A', 'Z' + 1)).ToString();
 
-            TextRandom.Text = text.ToString();
+            return randomPassword;
+        }
+
+        private void BtnRandom_Click(object sender, RoutedEventArgs e)
+        {
+            TextRandom.Text = GenerateRandomPassword();
         }
     }
 }

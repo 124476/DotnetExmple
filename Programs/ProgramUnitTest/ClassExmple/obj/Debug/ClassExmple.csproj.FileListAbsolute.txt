@@ -1,0 +1,6 @@
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\bin\Debug\ClassExmple.dll
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\bin\Debug\ClassExmple.pdb
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\obj\Debug\ClassExmple.csproj.AssemblyReference.cache
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\obj\Debug\ClassExmple.csproj.CoreCompileInputs.cache
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\obj\Debug\ClassExmple.dll
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramUnitTest\ClassExmple\obj\Debug\ClassExmple.pdb
