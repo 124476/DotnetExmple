@@ -36,8 +36,8 @@ namespace ProgramQrCode
         {
             // MessagingToolkit
             var encoder = new QRCodeEncoder();
-            Bitmap bitmap = encoder.Encode(QrText.Text);
-            using (MemoryStream ms = new MemoryStream())
+            var bitmap = encoder.Encode(QrText.Text);
+            using (var ms = new MemoryStream())
             {
                 bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
                 ms.Position = 0;
@@ -67,7 +67,7 @@ namespace ProgramQrCode
             if (dialog.ShowDialog().GetValueOrDefault())
             {
                 var imageBytes = File.ReadAllBytes(dialog.FileName);
-                using (MemoryStream ms = new MemoryStream(imageBytes))
+                using (var ms = new MemoryStream(imageBytes))
                 {
                     var bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
@@ -77,10 +77,10 @@ namespace ProgramQrCode
 
                     QrI.Source = bitmapImage;
 
-                    using (MemoryStream mss = new MemoryStream(imageBytes))
+                    using (var mss = new MemoryStream(imageBytes))
                     {
                         var decoder = new QRCodeDecoder();
-                        Bitmap bitmap = new Bitmap(mss);
+                        var bitmap = new Bitmap(mss);
                         QrText.Text = decoder.Decode(new QRCodeBitmapImage(bitmap));
                     }
                 }
@@ -92,17 +92,14 @@ namespace ProgramQrCode
             var dialog = new SaveFileDialog() { Filter = "*.png; | *.png;" };
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                var file = File.Create(dialog.FileName);
-                file.Close();
-
-                var encoder = new JpegBitmapEncoder();
                 var bitmapSource = (BitmapSource)QrI.Source;
+
+                var encoder = new PngBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    encoder.Save(ms);
-                    File.WriteAllBytes(dialog.FileName, ms.ToArray());
-                }
+
+                var file = File.Create(dialog.FileName);
+                encoder.Save(file);
+                file.Close();
             }
         }
     }
