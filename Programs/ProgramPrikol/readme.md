@@ -166,3 +166,29 @@ if (dialog.ShowDialog() == DialogResult.OK)
     TextPath.Text = dialog.SelectedPath;
 ```
 
+## Получение X и Y мышки + отрисовка по ним объекта
+
+```
+<Canvas Name="MyCanvas" MouseDown="MyCanvas_MouseDown" Background="White"></Canvas> <!--Background - обязателен!-->
+```
+
+```
+private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+{
+    var clickPoint = e.GetPosition(MyCanvas);
+    var x = clickPoint.X;
+    var y = clickPoint.Y;
+
+    var circle = new Ellipse()
+    {
+        Width = 30,
+        Height = 30,
+        Fill = Brushes.Red,
+    };
+
+    Canvas.SetLeft(circle, x - circle.Width / 2);
+    Canvas.SetTop(circle, y - circle.Height / 2);
+
+    MyCanvas.Children.Add(circle);
+}
+```

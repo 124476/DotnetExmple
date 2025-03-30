@@ -12,6 +12,7 @@
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Frame Name="MyFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
         <ScrollViewer Width="200">
             <StackPanel VerticalAlignment="Center" Margin="10">
                 <Button x:Name="BtnSlider" Click="BtnSlider_Click" Margin="0,10">Slider</Button>
@@ -30,8 +31,8 @@
                 <Button x:Name="BtnHech" Click="BtnHech_Click" Margin="0,10">Хэширование</Button>
                 <Button x:Name="BtnToast" Click="BtnToast_Click"  Margin="0,10">Уведомления</Button>
                 <Button x:Name="BtnGotPath" Click="BtnGotPath_Click" Margin="0,10">FolderBrowserDialog</Button>
+                <Button x:Name="BtnMouseCanvas" Click="BtnMouseCanvas_Click"  Margin="0,10">Клик мышкой</Button>
             </StackPanel>
         </ScrollViewer>
-        <Frame Name="MyFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

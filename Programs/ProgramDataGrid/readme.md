@@ -147,3 +147,13 @@ private void ComboMinutes_SelectionChanged(object sender, SelectionChangedEventA
     RefreshTimeItem();
 }
 ```
+
+## Пагинация
+
+```
+pageAll = items.Count / score;
+pageAll += items.Count % score == 0 ? 0 : 1;
+pageAll = pageAll == 0 ? 1 : pageAll;
+
+items = items.Skip((pageNow - 1) * score).Take(score).ToList();
+```

@@ -98,3 +98,5 @@ C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.csproj.CoreCompileInputs.cache
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.exe
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.pdb
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.baml

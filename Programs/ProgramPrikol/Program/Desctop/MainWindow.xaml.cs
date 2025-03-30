@@ -107,5 +107,10 @@ namespace Desctop
         {
             MyFrame.Navigate(new PageGotPath());
         }
+
+        private void BtnMouseCanvas_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageMouseCanvas());
+        }
     }
 }

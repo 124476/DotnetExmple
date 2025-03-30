@@ -20,6 +20,9 @@ namespace Desctop.Pages
     /// </summary>
     public partial class PageSell : Page
     {
+        int pageNow = 1;
+        int pageAll = 1;
+        int score = 10;
         public PageSell()
         {
             InitializeComponent();
@@ -43,21 +46,49 @@ namespace Desctop.Pages
 
             items = items.Where(x => x.Name.ToLower().Contains(search) || x.Description.ToLower().Contains(search)).ToList();
 
+            pageAll = items.Count / score;
+            pageAll += items.Count % score == 0 ? 0 : 1;
+            pageAll = pageAll == 0 ? 1 : pageAll;
+
+            items = items.Skip((pageNow - 1) * score).Take(score).ToList();
+
+            TextPages.Text = $"{pageNow} / {pageAll}";
+
             ListItems.ItemsSource = items;
         }
 
         private void DateStart_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            pageNow = 1;
+
             Refresh();
         }
 
         private void DateEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            pageNow = 1;
+
             Refresh();
         }
 
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            pageNow = 1;
+
+            Refresh();
+        }
+
+        private void BtnDown_Click(object sender, RoutedEventArgs e)
+        {
+            pageNow = pageNow == 1 ? 1 : pageNow - 1;
+
+            Refresh();
+        }
+
+        private void BtnUp_Click(object sender, RoutedEventArgs e)
+        {
+            pageNow = pageNow == pageAll ? pageAll : pageNow + 1;
+
             Refresh();
         }
     }

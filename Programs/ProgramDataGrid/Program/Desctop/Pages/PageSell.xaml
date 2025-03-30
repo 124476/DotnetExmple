@@ -21,19 +21,35 @@
             <TextBlock Margin="10">Поиск</TextBlock>
             <TextBox Name="TextSearch" Margin="10" TextChanged="TextSearch_TextChanged" Width="200"></TextBox>
         </StackPanel>
-        <DataGrid Name="ListItems" Grid.Row="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat='dd/MM/yyyy'}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="Картинка">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" Width="100" Height="100"></Image>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Name="ListItems">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding DateStart, StringFormat='dd/MM/yyyy'}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Картинка">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}" Width="100" Height="100"></Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Name="BtnDown" Content="&lt;" Click="BtnDown_Click"></Button>
+                <TextBlock Name="TextPages" HorizontalAlignment="Center" Grid.Column="1"></TextBlock>
+                <Button Name="BtnUp" Content="&gt;" Grid.Column="2" Click="BtnUp_Click"></Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
