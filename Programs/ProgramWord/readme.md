@@ -5,8 +5,8 @@
 var dialog = new OpenFileDialog() { Filter = "*.docx; | *.docx;" };
 if (dialog.ShowDialog().GetValueOrDefault())
 {
-    var application = new Word.Application();
-    var document = application.Documents.Open(dialog.FileName);
+    var app = new Word.Application();
+    var document = app.Documents.Open(dialog.FileName);
 
     var id_user = 0;
     var id_item = 0;
@@ -61,8 +61,8 @@ if (dialog.ShowDialog().GetValueOrDefault())
 ```
 var users = App.DB.Users;
 
-var application = new Word.Application();
-var document = application.Documents.Add();
+var app = new Word.Application();
+var document = app.Documents.Add();
 
 foreach (var user in users)
 {
@@ -109,5 +109,5 @@ foreach (var user in users)
         document.Words.Last.InsertBreak(Word.WdBreakType.wdPageBreak);
 }
 
-application.Visible = true;
+app.Visible = true;
 ```

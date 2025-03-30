@@ -52,9 +52,6 @@ namespace ProgramFormat
             var dialog = new SaveFileDialog() { Filter = "Export | *.xml; *.csv; *.txt; *.json;" };
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                var file = File.Create(dialog.FileName);
-                file.Close();
-
                 var type = dialog.FileName.Split('\\').Last().Split('.').Last();
                 switch (type)
                 {
@@ -63,26 +60,29 @@ namespace ProgramFormat
                             var items = App.DB.Items;
 
                             var serializer = new XmlSerializer(typeof(List<Item>));
-                            using (var writer = new StreamWriter(dialog.FileName))
-                            {
-                                serializer.Serialize(writer, items);
-                            }
+
+                            var file = File.Create(dialog.FileName);
+                            serializer.Serialize(file, items);
+                            file.Close();
 
                             break;
                         }
                     case "csv":
                     case "txt":
                         {
-                            var text = "Id;Name;User";
+                            var file = File.Create(dialog.FileName);
+                            file.Close();
 
-                            foreach (var item in App.DB.Items)
-                                text += $"\n{item.Id};{item.Name};{item.User.Name}";
+                            var text = "Id;Name;User" + string.Join("\n", App.DB.Items.Select(x => $"{x.Id};{x.Name};{x.User.Name}"));
                             File.WriteAllText(dialog.FileName, text);
 
                             break;
                         }
                     case "json":
                         {
+                            var file = File.Create(dialog.FileName);
+                            file.Close();
+
                             var items = App.DB.Items;
                             var json = JsonConvert.SerializeObject(items, Formatting.Indented);
 

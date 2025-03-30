@@ -3,19 +3,13 @@
 ### txt, csv
 #### Импорт
 ```
-var text = File.ReadAllText(dialog.FileName);
-foreach (var item in text.Split('\n').Skip(1))
-{
-	// Обработка item
-}
+var text = "Id;Name;User" + string.Join("\n", App.DB.Items.Select(x => $"{x.Id};{x.Name};{x.User.Name}"));
+File.WriteAllText(dialog.FileName, text);
 ```
 
 #### Экспорт
 ```
-var text = "Id;Name;User";
-
-foreach (var item in App.DB.Items)
-    text += $"\n{item.Id};{item.Name};{item.User.Name}";
+var text = "Id;Name;User" + string.Join("\n", App.DB.Items.Select(x => $"{x.Id};{x.Name};{x.User.Name}"));
 File.WriteAllText(dialog.FileName, text);
 ```
 
@@ -30,15 +24,21 @@ foreach (var itemElement in doc.Descendants("Item"))
 }
 ```
 
+без foreach
+```
+var items = doc.Descendants("Item").Select(x => new Item
+{
+    Id = (int)x.Element("Id"),
+    Name = (string)x.Element("Name"),
+});
+```
+
 #### Экспорт
 ```
 var items = App.DB.Items;
 
 var serializer = new XmlSerializer(typeof(List<Item>));
-using (var writer = new StreamWriter(dialog.FileName))
-{
-    serializer.Serialize(writer, items);
-}
+serializer.Serialize(file, items);
 ```
 
 ### json

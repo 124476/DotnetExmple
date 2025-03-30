@@ -2,10 +2,10 @@
 ## Основной код
 ### Импорт
 ```
-Excel.Application excelApp = new Excel.Application();
-Excel.Workbook workbook = excelApp.Workbooks.Open(dialog.FileName);
-Excel.Worksheet worksheet = workbook.Worksheets[1];
-Excel.Range objects = worksheet.UsedRange;
+var app = new Excel.Application();
+var workbook = app.Workbooks.Open(dialog.FileName);
+var worksheet = workbook.Worksheets[1];
+var objects = worksheet.UsedRange;
 
 int row = 2;
 while (objects[1][row].Value != null)
@@ -21,23 +21,21 @@ while (objects[1][row].Value != null)
 
 ### Экспорт
 ```
-var application = new Excel.Application();
+var app = new Excel.Application();
+var workbook = app.Workbooks.Add(Type.Missing);
+var worksheet = app.Worksheets.Item[1];
 
-application.SheetsInNewWorkbook = users.Count();
-Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
-Excel.Worksheet worksheet = application.Worksheets.Item[1];
+int row = 1;
 
-int startIndexRow = 1;
-
-worksheet.Cells[1][startIndexRow] = "Id";
-worksheet.Cells[2][startIndexRow] = "Name";
+worksheet.Cells[1][row] = "Id";
+worksheet.Cells[2][row] = "Name";
 
 foreach (var user in users)
 {
-    startIndexRow++;
-    worksheet.Cells[1][startIndexRow] = user.Id;
-    worksheet.Cells[2][startIndexRow] = user.Name;
+    row++;
+    worksheet.Cells[1][row] = user.Id;
+    worksheet.Cells[2][row] = user.Name;
 };
 
-application.Visible = true;
+app.Visible = true;
 ```

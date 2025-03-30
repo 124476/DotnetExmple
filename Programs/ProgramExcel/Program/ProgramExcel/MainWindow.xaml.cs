@@ -45,42 +45,39 @@ namespace ProgramExcel
             var users = App.DB.Users;
             var items = App.DB.Items;
 
-            var application = new Excel.Application();
+            var app = new Excel.Application();
+            var workbook = app.Workbooks.Add(Type.Missing);
+            var worksheet = app.Worksheets.Item[1];
 
-            application.SheetsInNewWorkbook = users.Count();
-            Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
-            Excel.Worksheet worksheet = application.Worksheets.Item[1];
+            int row = 1;
 
-            int startIndexRow = 1;
-
-            worksheet.Cells[1][startIndexRow] = "Id";
-            worksheet.Cells[2][startIndexRow] = "Name";
+            worksheet.Cells[1][row] = "Id";
+            worksheet.Cells[2][row] = "Name";
 
             foreach (var user in users)
             {
-                startIndexRow++;
-                worksheet.Cells[1][startIndexRow] = user.Id;
-                worksheet.Cells[2][startIndexRow] = user.Name;
+                row++;
+                worksheet.Cells[1][row] = user.Id;
+                worksheet.Cells[2][row] = user.Name;
             };
 
-            worksheet = application.Worksheets.Item[2];
+            worksheet = app.Worksheets.Item[2];
 
+            row = 1;
 
-            startIndexRow = 1;
-
-            worksheet.Cells[1][startIndexRow] = "Id";
-            worksheet.Cells[2][startIndexRow] = "Name";
-            worksheet.Cells[3][startIndexRow] = "User";
+            worksheet.Cells[1][row] = "Id";
+            worksheet.Cells[2][row] = "Name";
+            worksheet.Cells[3][row] = "User";
 
             foreach (var item in items)
             {
-                startIndexRow++;
-                worksheet.Cells[1][startIndexRow] = item.Id;
-                worksheet.Cells[2][startIndexRow] = item.Name;
-                worksheet.Cells[3][startIndexRow] = item.User.Id;
+                row++;
+                worksheet.Cells[1][row] = item.Id;
+                worksheet.Cells[2][row] = item.Name;
+                worksheet.Cells[3][row] = item.User.Id;
             };
 
-            application.Visible = true;
+            app.Visible = true;
         }
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
@@ -91,10 +88,10 @@ namespace ProgramExcel
                 var users = new List<User>();
                 var items = new List<Item>();
 
-                Excel.Application excelApp = new Excel.Application();
-                Excel.Workbook workbook = excelApp.Workbooks.Open(dialog.FileName);
-                Excel.Worksheet worksheet = workbook.Worksheets[1];
-                Excel.Range objects = worksheet.UsedRange;
+                var app = new Excel.Application();
+                var workbook = app.Workbooks.Open(dialog.FileName);
+                var worksheet = workbook.Worksheets[1];
+                var objects = worksheet.UsedRange;
 
                 int row = 2;
                 while (objects[1][row].Value != null)
