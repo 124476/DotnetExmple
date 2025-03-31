@@ -2,10 +2,15 @@
 <Schema Namespace="WPFExmpleDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="WPFExmpleDataBaseEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Item" EntityType="WPFExmpleDataBaseModel.Item" />
+    <EntitySet Name="ItemImages" EntityType="WPFExmpleDataBaseModel.ItemImages" />
     <EntitySet Name="Role" EntityType="WPFExmpleDataBaseModel.Role" />
     <EntitySet Name="sysdiagrams" EntityType="WPFExmpleDataBaseModel.sysdiagrams" />
     <EntitySet Name="User" EntityType="WPFExmpleDataBaseModel.User" />
     <EntitySet Name="UserItems" EntityType="WPFExmpleDataBaseModel.UserItems" />
+    <AssociationSet Name="FK_ItemImages_Item" Association="WPFExmpleDataBaseModel.FK_ItemImages_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemImages" EntitySet="ItemImages" />
+    </AssociationSet>
     <AssociationSet Name="FK_UserItems_Item" Association="WPFExmpleDataBaseModel.FK_UserItems_Item">
       <End Role="Item" EntitySet="Item" />
       <End Role="UserItems" EntitySet="UserItems" />
@@ -38,7 +43,17 @@
     <Property Name="DateStart" Type="DateTime" Precision="0" />
     <Property Name="TimeStart" Type="Time" Precision="7" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ItemImages" Relationship="WPFExmpleDataBaseModel.FK_ItemImages_Item" FromRole="Item" ToRole="ItemImages" />
     <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="Item" ToRole="UserItems" />
+  </EntityType>
+  <EntityType Name="ItemImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Item" Relationship="WPFExmpleDataBaseModel.FK_ItemImages_Item" FromRole="ItemImages" ToRole="Item" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -79,10 +94,22 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="Int32" />
-    <Property Name="Item" Type="Int32" />
-    <NavigationProperty Name="Item1" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
+    <Property Name="ItemId" Type="Int32" />
+    <NavigationProperty Name="Item" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
     <NavigationProperty Name="User" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="UserItems" ToRole="User" />
   </EntityType>
+  <Association Name="FK_ItemImages_Item">
+    <End Type="WPFExmpleDataBaseModel.Item" Role="Item" Multiplicity="0..1" />
+    <End Type="WPFExmpleDataBaseModel.ItemImages" Role="ItemImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItemImages">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserItems_Item">
     <End Type="WPFExmpleDataBaseModel.Item" Role="Item" Multiplicity="0..1" />
     <End Type="WPFExmpleDataBaseModel.UserItems" Role="UserItems" Multiplicity="*" />
@@ -91,7 +118,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="UserItems">
-        <PropertyRef Name="Item" />
+        <PropertyRef Name="ItemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -12,13 +12,12 @@ namespace Desctop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserItems
+    public partial class ItemImages
     {
         public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
         public Nullable<int> ItemId { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual Item Item { get; set; }
-        public virtual User User { get; set; }
     }
 }

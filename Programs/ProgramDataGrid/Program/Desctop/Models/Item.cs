@@ -17,6 +17,7 @@ namespace Desctop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
+            this.ItemImages = new HashSet<ItemImages>();
             this.UserItems = new HashSet<UserItems>();
         }
     
@@ -32,6 +33,8 @@ namespace Desctop.Models
         public Nullable<System.TimeSpan> TimeStart { get; set; }
         public string Description { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemImages> ItemImages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserItems> UserItems { get; set; }
     }

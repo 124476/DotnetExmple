@@ -18,6 +18,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ItemImages">
+      <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.ItemImages">
+        <MappingFragment StoreEntitySet="ItemImages">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.Role">
         <MappingFragment StoreEntitySet="Role">
@@ -52,7 +61,7 @@
     <EntitySetMapping Name="UserItems">
       <EntityTypeMapping TypeName="WPFExmpleDataBaseModel.UserItems">
         <MappingFragment StoreEntitySet="UserItems">
-          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

@@ -16,6 +16,14 @@
     <Property Name="TimeStart" Type="time" Precision="7" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="ItemImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -50,8 +58,20 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" />
-    <Property Name="Item" Type="int" />
+    <Property Name="ItemId" Type="int" />
   </EntityType>
+  <Association Name="FK_ItemImages_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="ItemImages" Type="Self.ItemImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItemImages">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -84,7 +104,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="UserItems">
-        <PropertyRef Name="Item" />
+        <PropertyRef Name="ItemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -102,10 +122,15 @@
   </Association>
   <EntityContainer Name="Хранилище WPFExmpleDataBaseModelContainer">
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemImages" EntityType="Self.ItemImages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserItems" EntityType="Self.UserItems" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ItemImages_Item" Association="Self.FK_ItemImages_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemImages" EntitySet="ItemImages" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />

@@ -118,7 +118,7 @@ namespace Desctop.Pages
             var item = ComboItems.SelectedItem as Item;
             if (item == null) return;
 
-            var itemUser = new UserItems() { User = contextUser, Item1 = item };
+            var itemUser = new UserItems() { User = contextUser, Item = item };
 
             contextUser.UserItems.Add(itemUser);
 
