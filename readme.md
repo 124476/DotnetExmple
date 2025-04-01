@@ -39,7 +39,7 @@
 12. **[Модульное тестирование](Programs/ProgramUnitTest/readme.md)**  
    Модульное тестирование функиций
 
-13. **[Designing](designing.md)
+13. **[Designing](designing.md)**
    Все виды проектирования
 
 ## Важные технологии
