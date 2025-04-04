@@ -192,3 +192,84 @@ private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
     MyCanvas.Children.Add(circle);
 }
 ```
+
+## Издача звука
+
+```
+SystemSounds.Beep.Play();
+```
+
+## Радио button
+
+```
+<Style TargetType="RadioButton" x:Key="RadioButtonCustom">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="RadioButton">
+                <Border Name="CustomBorder" Background="LightGray" Padding="10">
+                    <TextBlock Text="{TemplateBinding Content}"></TextBlock>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsChecked" Value="true">
+                        <Setter TargetName="CustomBorder" Property="Background" Value="LightBlue"></Setter>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+```
+
+```
+<StackPanel VerticalAlignment="Center" Margin="1-">
+    <RadioButton Style="{StaticResource RadioButtonCustom}">Кнопка 1</RadioButton>
+    <RadioButton Style="{StaticResource RadioButtonCustom}">Кнопка 2</RadioButton>
+    <RadioButton Style="{StaticResource RadioButtonCustom}">Кнопка 3</RadioButton>
+    <RadioButton Style="{StaticResource RadioButtonCustom}">Кнопка 4</RadioButton>
+</StackPanel>
+```
+
+Template - для того, чтобы полностью переписать дизайн кнопки
+
+## Смена темы
+
+Создаем два словаря ресурсов
+> ⚠️ **Внимание:** В свойствах словарей ресурсов установите build: resource
+
+Themes/ThemeDark.xaml
+Themes/ThemeLigth.xaml
+
+И прописываем в них стили при выборе
+
+в MainWindow
+```
+ResourceDictionary newTheme = new ResourceDictionary();
+newTheme.Source = new Uri($"Themes/ThemeLigth.xaml", UriKind.Relative);
+
+Application.Current.Resources.MergedDictionaries.Clear();
+
+Application.Current.Resources.MergedDictionaries.Add(newTheme);
+```
+
+смена стиля
+```
+private void SetTheme(string theme)
+{
+    ResourceDictionary newTheme = new ResourceDictionary();
+    newTheme.Source = new Uri($"Themes/{theme}", UriKind.Relative);
+
+    Application.Current.Resources.MergedDictionaries.Clear();
+
+    Application.Current.Resources.MergedDictionaries.Add(newTheme);
+}
+
+private void BtnLigth_Click(object sender, RoutedEventArgs e)
+{
+    SetTheme("ThemeLigth.xaml");
+}
+
+private void BtnDark_Click(object sender, RoutedEventArgs e)
+{
+    SetTheme("ThemeDark.xaml");
+}
+```

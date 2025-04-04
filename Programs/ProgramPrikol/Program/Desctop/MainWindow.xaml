@@ -32,6 +32,9 @@
                 <Button x:Name="BtnToast" Click="BtnToast_Click"  Margin="0,10">Уведомления</Button>
                 <Button x:Name="BtnGotPath" Click="BtnGotPath_Click" Margin="0,10">FolderBrowserDialog</Button>
                 <Button x:Name="BtnMouseCanvas" Click="BtnMouseCanvas_Click"  Margin="0,10">Клик мышкой</Button>
+                <Button x:Name="BtnSound" Click="BtnSound_Click"  Margin="0,10">Звук</Button>
+                <Button x:Name="BtnRadioButton" Click="BtnRadioButton_Click"  Margin="0,10">Radio-button</Button>
+                <Button x:Name="BtnStyles" Click="BtnStyles_Click"  Margin="0,10">Смена стилей</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

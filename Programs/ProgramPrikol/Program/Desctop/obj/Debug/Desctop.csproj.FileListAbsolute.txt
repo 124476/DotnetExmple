@@ -73,7 +73,6 @@ C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\App.g.cs
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop_MarkupCompile.cache
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop_MarkupCompile.lref
-C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\App.baml
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\MainWindow.baml
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageCopyPast.baml
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageEmail.baml
@@ -100,3 +99,11 @@ C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Desctop.pdb
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.g.cs
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.baml
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.g.cs
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageRadioButtons.g.cs
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSound.g.cs
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageMouseCanvas.baml
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageRadioButtons.baml
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSound.baml
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.g.cs
+C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.baml

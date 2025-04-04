@@ -65,6 +65,15 @@
     <Compile Include="Pages\PageMouseCanvas.xaml.cs">
       <DependentUpon>PageMouseCanvas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageRadioButtons.xaml.cs">
+      <DependentUpon>PageRadioButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSetTheme.xaml.cs">
+      <DependentUpon>PageSetTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSound.xaml.cs">
+      <DependentUpon>PageSound.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowPalitra.xaml.cs">
       <DependentUpon>WindowPalitra.xaml</DependentUpon>
     </Compile>
@@ -116,7 +125,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageRadioButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageRandom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageSetTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageSound.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +169,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="Themes\ThemeDark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Themes\ThemeLigth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="Windows\WindowPalitra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

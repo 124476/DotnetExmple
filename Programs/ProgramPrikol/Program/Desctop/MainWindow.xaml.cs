@@ -25,6 +25,14 @@ namespace Desctop
         public MainWindow()
         {
             InitializeComponent();
+
+            ResourceDictionary newTheme = new ResourceDictionary();
+            newTheme.Source = new Uri($"Themes/ThemeLigth.xaml", UriKind.Relative);
+
+            Application.Current.Resources.MergedDictionaries.Clear();
+
+            Application.Current.Resources.MergedDictionaries.Add(newTheme);
+
             MyFrame.Navigate(new PageSlider());
         }
 
@@ -111,6 +119,21 @@ namespace Desctop
         private void BtnMouseCanvas_Click(object sender, RoutedEventArgs e)
         {
             MyFrame.Navigate(new PageMouseCanvas());
+        }
+
+        private void BtnSound_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageSound());
+        }
+
+        private void BtnRadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageRadioButtons());
+        }
+
+        private void BtnStyles_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageSetTheme());
         }
     }
 }
