@@ -273,3 +273,72 @@ private void BtnDark_Click(object sender, RoutedEventArgs e)
     SetTheme("ThemeDark.xaml");
 }
 ```
+
+## Подсказка в TextBox
+
+```
+<TextBox>
+    <TextBox.Resources>
+        <VisualBrush x:Key="HintBrush" AlignmentX="Left" Stretch="None">
+            <VisualBrush.Visual>
+                <TextBlock Text="Введите текст..." Foreground="Gray"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </TextBox.Resources>
+    
+    <TextBox.Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="17"/>
+
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value=""/>
+                        <Condition Property="IsKeyboardFocused" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource HintBrush}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </TextBox.Style>
+    <TextBox.Tag>Введите текст...</TextBox.Tag>
+</TextBox>
+```
+
+## Выделение цветом через определенное количество DataGrid
+
+```
+<DataGrid x:Name="DataItems" AlternationCount="2">
+    <DataGrid.RowStyle>
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="Gray"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </DataGrid.RowStyle>
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+    </DataGrid.Columns>
+</DataGrid>
+```
+
+## Нумерация DataGrid
+
+```
+<DataGrid x:Name="DataItems" LoadingRow="DataItems_LoadingRow" HeadersVisibility="None">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="№" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Header}" Width="30"/>
+        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+    </DataGrid.Columns>
+</DataGrid>
+```
+
+```
+private void DataItems_LoadingRow(object sender, DataGridRowEventArgs e)
+{
+    e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+}
+```

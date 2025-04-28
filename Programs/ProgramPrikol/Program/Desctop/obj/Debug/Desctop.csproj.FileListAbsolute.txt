@@ -20,7 +20,6 @@ C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\bin\Debug\Desctop.exe.config
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\bin\Debug\Desctop.exe
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\bin\Debug\Desctop.pdb
-C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\App.baml
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\MainWindow.baml
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageCopyPast.baml
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageEmail.baml
@@ -107,3 +106,19 @@ C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSound.baml
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.g.cs
 C:\Users\Aidar\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageDataGrid.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageDirectoryFile.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageHint.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageLocalization.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageRadioButtons.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSound.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageRadioButtons.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSetTheme.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageSound.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageDataGrid.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageDirectoryFile.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageHint.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageLocalization.baml
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageExpander.g.cs
+C:\Users\art82\source\repos\WPFExmple\Programs\ProgramPrikol\Program\Desctop\obj\Debug\Pages\PageExpander.baml

@@ -32,6 +32,9 @@
         <Setter Property="FontSize" Value="17"></Setter>
         <Setter Property="Background" Value="White"></Setter>
     </Style>
+    <Style TargetType="Expander">
+        <Setter Property="FontSize" Value="17"></Setter>
+    </Style>
 
     <Style TargetType="RadioButton" x:Key="RadioButtonCustom">
         <Setter Property="Template">

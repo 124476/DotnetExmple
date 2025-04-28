@@ -135,5 +135,30 @@ namespace Desctop
         {
             MyFrame.Navigate(new PageSetTheme());
         }
+
+        private void BtnDataGrid_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageDataGrid());
+        }
+
+        private void BtnDirectoryFile_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageDirectoryFile());
+        }
+
+        private void BtnHint_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageHint());
+        }
+
+        private void BtnLocalization_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageLocalization());
+        }
+
+        private void BtnExpander_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new PageExpander());
+        }
     }
 }

@@ -1,0 +1,62 @@
+﻿<Page x:Class="Desctop.Pages.PageDataGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desctop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageDataGrid">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Ручное создание заголовков -->
+        <Grid Grid.Row="0" Background="#f5f5f5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Text="№" Padding="5" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Название" Padding="5" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="2" Text="Двойная колонка" Padding="5" HorizontalAlignment="Center"/>
+
+            <!-- Вторая строка заголовков -->
+            <Grid Grid.Column="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Первый" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Второй" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <DataGrid x:Name="DataItems" AlternationCount="2" LoadingRow="DataItems_LoadingRow" HeadersVisibility="None" Grid.Row="1">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="Gray"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Header}" Width="30"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="CountOne" Binding="{Binding CountTwo}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="CountTwo" Binding="{Binding CountOne}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

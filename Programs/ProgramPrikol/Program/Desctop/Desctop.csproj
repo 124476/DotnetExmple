@@ -59,8 +59,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ColorPalitra.cs" />
+    <Compile Include="Pages\PageDataGrid.xaml.cs">
+      <DependentUpon>PageDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageDirectoryFile.xaml.cs">
+      <DependentUpon>PageDirectoryFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageExpander.xaml.cs">
+      <DependentUpon>PageExpander.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageGotPath.xaml.cs">
       <DependentUpon>PageGotPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageHint.xaml.cs">
+      <DependentUpon>PageHint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageLocalization.xaml.cs">
+      <DependentUpon>PageLocalization.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageMouseCanvas.xaml.cs">
       <DependentUpon>PageMouseCanvas.xaml</DependentUpon>
@@ -93,7 +108,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageDirectoryFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageExpander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,7 +132,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageHint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageHyperLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageLocalization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +209,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Resource>
     <Resource Include="Themes\ThemeLigth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Resource.en.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Resource.ru.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>

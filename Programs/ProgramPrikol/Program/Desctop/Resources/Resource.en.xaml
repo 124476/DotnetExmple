@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="LanguageChange">Language change</sys:String>
+    <sys:String x:Key="TheText">The text will not be changed everywhere, because the creator is lazy</sys:String>
+    <sys:String x:Key="ChangeLanguage">Change the language</sys:String>
+</ResourceDictionary>

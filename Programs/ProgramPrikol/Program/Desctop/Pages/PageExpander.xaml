@@ -1,0 +1,56 @@
+﻿<Page x:Class="Desctop.Pages.PageExpander"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desctop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageExpander">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="BtnMenu" Click="BtnMenu_Click" Width="200" Height="30">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Кнопка 1" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="Кнопка 2" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="Кнопка 3" Click="MenuItem_Click"></MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+            DropDown
+        </Button>
+        
+        <Expander Width="250" VerticalAlignment="Center" Grid.Row="1">
+            <Expander.Header>
+                <TextBlock>Нормальный expander</TextBlock>
+            </Expander.Header>
+            <StackPanel>
+                <Button>Кнопка 1</Button>
+                <Button>Кнопка 2</Button>
+                <Button>Кнопка 3</Button>
+                <Button>Кнопка 4</Button>
+            </StackPanel>
+        </Expander>
+
+        <Expander FlowDirection="RightToLeft" Width="250" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">
+            <Expander.Header>
+                <TextBlock>Перевернутый expander</TextBlock>
+            </Expander.Header>
+            <StackPanel>
+                <Button>Кнопка 1</Button>
+                <Button>Кнопка 2</Button>
+                <Button>Кнопка 3</Button>
+                <Button>Кнопка 4</Button>
+            </StackPanel>
+        </Expander>
+    </Grid>
+</Page>

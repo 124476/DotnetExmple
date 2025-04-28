@@ -35,6 +35,11 @@
                 <Button x:Name="BtnSound" Click="BtnSound_Click"  Margin="0,10">Звук</Button>
                 <Button x:Name="BtnRadioButton" Click="BtnRadioButton_Click"  Margin="0,10">Radio-button</Button>
                 <Button x:Name="BtnStyles" Click="BtnStyles_Click"  Margin="0,10">Смена стилей</Button>
+                <Button x:Name="BtnDataGrid" Click="BtnDataGrid_Click"  Margin="0,10">DataGrid</Button>
+                <Button x:Name="BtnDirectoryFile" Click="BtnDirectoryFile_Click"  Margin="0,10">Директории и файлы</Button>
+                <Button x:Name="BtnHint" Click="BtnHint_Click"  Margin="0,10">Подсказка текста</Button>
+                <Button x:Name="BtnLocalization" Click="BtnLocalization_Click"  Margin="0,10">Смена языка</Button>
+                <Button x:Name="BtnExpander" Click="BtnExpander_Click" Margin="0,10">Expander</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>
