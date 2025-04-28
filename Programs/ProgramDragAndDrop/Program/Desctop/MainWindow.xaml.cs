@@ -21,52 +21,9 @@ namespace Desctop
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Item> Items = new List<Item>();
-        Item contextItem;
         public MainWindow()
         {
             InitializeComponent();
-
-            Items.Add(new Item() { Id = 1, Name = "Item 1", ListId = 1 });
-            Items.Add(new Item() { Id = 2, Name = "Item 2", ListId = 1 });
-            Items.Add(new Item() { Id = 3, Name = "Item 3", ListId = 1 });
-            Items.Add(new Item() { Id = 4, Name = "Item 4", ListId = 2 });
-            Items.Add(new Item() { Id = 5, Name = "Item 5", ListId = 2 });
-            Items.Add(new Item() { Id = 6, Name = "Item 6", ListId = 2 });
-
-            Refresh();
-        }
-
-        private void Refresh()
-        {
-            ListOne.ItemsSource = null;
-            ListTwo.ItemsSource = null;
-
-            ListOne.ItemsSource = Items.Where(x => x.ListId == 1).ToList();
-            ListTwo.ItemsSource = Items.Where(x => x.ListId == 2).ToList();
-        }
-
-        private void List_Drop(object sender, DragEventArgs e)
-        {
-            var list = (sender as ListView);
-            if (list == null) return;
-            if (contextItem == null) return;
-
-            if (list.Name == "ListOne")
-                contextItem.ListId = 1;
-            if (list.Name == "ListTwo")
-                contextItem.ListId = 2;
-
-            Refresh();
-        }
-
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = (sender as TextBlock).DataContext as Item;
-            if (item == null) return;
-
-            contextItem = item;
-            DragDrop.DoDragDrop(this, this, DragDropEffects.Move);
         }
     }
 }

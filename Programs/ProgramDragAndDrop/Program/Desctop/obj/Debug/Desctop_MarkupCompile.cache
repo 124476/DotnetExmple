@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\art82\source\repos\WPFExmple\Programs\ProgramDragAndDrop\Program\Desctop\App.xaml
-1219584333
+3-516374992
 
-7-1205495822
+8-1970659779
 13-1310406943
-MainWindow.xaml;
+Controls\ItemControl.xaml;Controls\StackControl.xaml;MainWindow.xaml;
 
-True
+False
 
