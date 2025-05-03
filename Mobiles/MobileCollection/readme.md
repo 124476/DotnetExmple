@@ -124,4 +124,4 @@ if (!File.Exists(dbPath))
 
 ## Расположение db
 
-<img src="/images/db.png"/>
+<img src="/Images/db.png"/>
