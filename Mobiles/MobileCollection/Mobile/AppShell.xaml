@@ -4,12 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Mobile"
-    Shell.FlyoutBehavior="Disabled"
-    Title="Mobile">
+    Shell.FlyoutBehavior="Flyout"
+    Title="Collection mobile">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <StackLayout>
+            <Label FontSize="Header">Меню</Label>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <ShellContent Title="Главная" ContentTemplate="{DataTemplate local:Pages.PageLogin}" Route="PageLogin" />
+    <ShellContent Title="Магазин" ContentTemplate="{DataTemplate local:Pages.PageSell}" Route="PageSell" />
 
 </Shell>

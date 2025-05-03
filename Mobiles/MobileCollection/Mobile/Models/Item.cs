@@ -31,32 +31,20 @@ namespace Mobile.Models
                 try
                 {
                     byte[] bytes = Convert.FromBase64String(Image);
-                    using (var ms = new MemoryStream())
-                    {
-                        return ImageSource.FromStream(() => ms);
-                    }
+                    return ImageSource.FromStream(() => new MemoryStream(bytes));
                 }
                 catch
                 {
                     return null;
                 }
             }
-            set
+        }
+        [NotMapped]
+        public string ColorDownload
+        {
+            get
             {
-                if (value == null) Image = null;
-
-                var streamImageSource = value as StreamImageSource;
-
-                var cancellationToken = CancellationToken.None;
-                var task = streamImageSource.Stream(cancellationToken);
-                task.Wait(cancellationToken);
-                var stream = task.Result;
-
-                using (var memoryStream = new MemoryStream())
-                {
-                    stream.CopyTo(memoryStream);
-                    Image = Convert.ToBase64String(memoryStream.ToArray());
-                }
+                return Doc == null ? "Gray" : "";
             }
         }
     }

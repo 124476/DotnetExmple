@@ -16,6 +16,23 @@ namespace Mobile.Models
         public int ItemId { get; set; }
         public string Image { get; set; }
         [NotMapped]
-        public ImageSource ImageSource { get; set; }
+        public ImageSource? ImageSource
+        {
+            get
+            {
+                try
+                {
+                    byte[] bytes = Convert.FromBase64String(Image);
+                    using (var ms = new MemoryStream())
+                    {
+                        return ImageSource.FromStream(() => ms);
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

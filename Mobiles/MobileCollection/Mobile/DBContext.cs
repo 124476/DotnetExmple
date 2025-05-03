@@ -21,12 +21,12 @@ namespace Mobile
         {
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "db.db");
 
-            //if (!File.Exists(dbPath))
-            //{
-            //    using var ms = FileSystem.OpenAppPackageFileAsync("mydb.db").Result;
-            //    using var fileStream = File.Create(dbPath);
-            //    ms.CopyTo(fileStream);
-            //}
+            if (!File.Exists(dbPath))
+            {
+                using var ms = FileSystem.OpenAppPackageFileAsync("db.db").Result;
+                using var fileStream = File.Create(dbPath);
+                ms.CopyTo(fileStream);
+            }
 
             optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlite($"Filename={dbPath}");

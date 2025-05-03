@@ -39,6 +39,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = Mobile.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/Aidar/source/repos/WPFExmple/Mobiles/MobileCollection/Mobile/Pages/PageAdmin.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageAdmin.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageAdmin.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageAdmin.xaml
+
+[C:/Users/Aidar/source/repos/WPFExmple/Mobiles/MobileCollection/Mobile/Pages/PageItem.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageItem.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageItem.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageItem.xaml
+
 [C:/Users/Aidar/source/repos/WPFExmple/Mobiles/MobileCollection/Mobile/Pages/PageItems.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageItems.xaml
@@ -62,6 +74,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageSell.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\PageSell.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\PageSell.xaml
+
+[C:/Users/Aidar/source/repos/WPFExmple/Mobiles/MobileCollection/Mobile/Pages/PageUser.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageUser.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageUser.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageUser.xaml
 
 [C:/Users/Aidar/source/repos/WPFExmple/Mobiles/MobileCollection/Mobile/Pages/PageUsers.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

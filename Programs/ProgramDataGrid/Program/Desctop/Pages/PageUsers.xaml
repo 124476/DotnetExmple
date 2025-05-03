@@ -55,7 +55,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Item1.Name}"></TextBlock>
+                                <TextBlock Text="{Binding Item.Name}"></TextBlock>
                                 <Button x:Name="BtnDeleteItem" Background="Red" Click="BtnDeleteItem_Click" Margin="10,0" Width="80" FontSize="15">Удалить</Button>
                             </StackPanel>
                         </DataTemplate>

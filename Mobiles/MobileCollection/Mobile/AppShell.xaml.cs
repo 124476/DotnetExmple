@@ -1,4 +1,7 @@
-﻿namespace Mobile
+﻿using Microsoft.EntityFrameworkCore;
+using Mobile.Models;
+
+namespace Mobile
 {
     public partial class AppShell : Shell
     {
