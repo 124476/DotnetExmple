@@ -1,0 +1,1 @@
+C:\Users\Aidar\source\repos\WPFExmple\Mobiles\MobileCollection\Mobile\Mobile.csproj;x64
