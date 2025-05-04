@@ -2,10 +2,10 @@
 
 ## Необходимые библиотеки
 
-Microsoft.EntityFrameworkCore.Design
-Microsoft.EntityFrameworkCore.Proxies
-Microsoft.EntityFrameworkCore.SqlServer
-Microsoft.EntityFrameworkCore.Tools
+- Microsoft.EntityFrameworkCore.Design
+- Microsoft.EntityFrameworkCore.Proxies
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
 
 ### Если не работает через NuGet
 

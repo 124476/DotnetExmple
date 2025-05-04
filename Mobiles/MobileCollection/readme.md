@@ -2,10 +2,10 @@
 
 ## Необходимые библиотеки
 
-Microsoft.EntityFrameworkCore.Design
-Microsoft.EntityFrameworkCore.Proxies
-Microsoft.EntityFrameworkCore.Sqlite
-Microsoft.EntityFrameworkCore.Tools
+- Microsoft.EntityFrameworkCore.Design
+- Microsoft.EntityFrameworkCore.Proxies
+- Microsoft.EntityFrameworkCore.Sqlite
+- Microsoft.EntityFrameworkCore.Tools
 
 ## Создание модели
 
