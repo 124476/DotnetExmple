@@ -1,0 +1,120 @@
+﻿@page "/users/{id:int}"
+
+@using Web.Models
+
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<div style="display: grid; grid-template-columns: 1fr 3fr;">
+    <div style="display: flex; flex-direction: column; justify-self: center; grid-column: 1;">
+        <h3>Пользователь</h3>
+        <label>Имя</label>
+        <input @bind="@ContextUser.Name" />
+        <label>Логин</label>
+        <input @bind="@ContextUser.Login" />
+        <label>Пароль</label>
+        <input @bind="@ContextUser.Password" />
+        <label>Роль</label>
+        <select @bind="ContextUser.RoleId">
+            @foreach (var role in (new DBContext()).Roles.ToList())
+            {
+                <option value="@role.Id">@role.Name</option>
+            }
+        </select>
+        <label>Начальник</label>
+        <select @bind="ContextUser.UserId">
+            @foreach (var user in (new DBContext()).Users.ToList())
+            {
+                <option value="@user.Id">@user.Name</option>
+            }
+        </select>
+        <label style="color: red;">@Error</label>
+
+        <button @onclick="BtnSave">Сохранить</button>
+    </div>
+    <div style="display: flex; flex-direction: column; grid-column: 2;">
+        <label>Предметы</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ContextUser.UserItems)
+                {
+                    <tr>
+                        <th>@item.Item.Name</th>
+                        <th><button @onclick="() => BtnDeleteItem(item.Id)">Удалить</button></th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <select @bind="ItemId">
+            @foreach (var item in (new DBContext()).Items.ToList())
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <button @onclick="BtnAdd">Добавить</button>
+    </div>
+</div>
+
+
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private string Error = "";
+
+    private User ContextUser;
+    private List<UserItem> Items = new List<UserItem>();
+
+    private int ItemId;
+
+    protected override void OnInitialized()
+    {
+        ContextUser = NetManage.DB.Users.FirstOrDefault(x => x.Id == Id);
+        if (ContextUser == null) ContextUser = new User();
+
+        Items = NetManage.DB.UserItems.Where(x => x.UserId == ContextUser.Id).ToList();
+    }
+
+    private void BtnSave()
+    {
+        try
+        {
+            if (ContextUser.Id == 0)
+                NetManage.DB.Users.Add(ContextUser);
+            NetManage.DB.SaveChanges();
+        }
+        catch
+        {
+            Error = "Заполните все поля корректными данными";
+            return;
+        }
+
+        Navigation.NavigateTo("/users");
+    }
+
+    private void BtnDeleteItem(int itemId)
+    {
+        var item = ContextUser.UserItems.FirstOrDefault(x => x.Id == itemId);
+        NetManage.DB.UserItems.Remove(item);
+        NetManage.DB.SaveChanges();
+    }
+
+    private void BtnAdd()
+    {
+        var item = NetManage.DB.Items.FirstOrDefault(x => x.Id == ItemId);
+        if (item == null) return;
+
+        if (!ContextUser.UserItems.Select(x => x.ItemId).Contains(ItemId))
+        {
+            ContextUser.UserItems.Add(new UserItem() { UserId = ContextUser.Id, ItemId = ItemId, Item = item, });
+            NetManage.DB.SaveChanges();
+        }
+    }
+}

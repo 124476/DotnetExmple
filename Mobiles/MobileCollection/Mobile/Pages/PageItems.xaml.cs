@@ -22,11 +22,14 @@ public partial class PageItems : ContentPage
         try
         {
             byte[] bytes = Convert.FromBase64String(item.Doc);
-            var downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var filePath = Path.Combine(downloadsPath, item.DocFormat);
 
-            await File.WriteAllBytesAsync(filePath, bytes);
-            await DisplayAlert("Успех", $"Файл сохранен: {filePath}", "OK");
+            string file = Path.Combine(FileSystem.CacheDirectory, item.DocFormat);
+
+            File.WriteAllBytes(file, bytes);
+
+            //Launcher.Default.OpenAsync(new OpenFileRequest("title", new ReadOnlyFile(file))).ConfigureAwait(false);
+
+            await DisplayAlert("Успех", $"Файл сохранен: {item.DocFormat}", "OK");
         }
         catch (Exception ex)
         {
@@ -55,6 +58,6 @@ public partial class PageItems : ContentPage
 
     private async void BtnAdd_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PageItem(new Item()));
+        await Navigation.PushAsync(new PageItem(new Item() { DateStart = DateTime.Now, TimeStart = TimeSpan.FromSeconds(10)}));
     }
 }

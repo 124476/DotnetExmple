@@ -1,0 +1,25 @@
+﻿@page "/roles"
+
+@using Web.Models
+
+@rendermode InteractiveServer
+
+<h3>Роли</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var role in (new DBContext()).Roles)
+        {
+            <tr>
+                <th>@role.Id</th>
+                <th>@role.Name</th>
+            </tr>
+        }
+    </tbody>
+</table>

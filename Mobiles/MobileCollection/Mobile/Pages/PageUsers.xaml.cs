@@ -41,4 +41,9 @@ public partial class PageUsers : ContentPage
 
 
     }
+
+    private async void BtnAdd_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PageUser(new User()));
+    }
 }

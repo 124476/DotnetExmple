@@ -1,0 +1,44 @@
+﻿@page "/users"
+
+@rendermode InteractiveServer
+
+@using Web.Models
+@using Blazorise.DataGrid
+
+<div style="display: flex; flex-direction: row; justify-content: space-between">
+    <h3>Пользователи</h3>
+    <a class="btn btn-primary" href="/users/0">Добавить</a>
+</div>
+
+<DataGrid TItem="User" Data="@users" ReadData="OnReadData">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(User.Id)" Caption="Id"></DataGridColumn>
+        <DataGridColumn Field="@nameof(User.Login)" Caption="Логин"></DataGridColumn>
+        <DataGridColumn Field="@nameof(User.Items)" Caption="Предметы"></DataGridColumn>
+        <DataGridColumn Field="@nameof(User.Role.Name)" Caption="Роль"></DataGridColumn>
+        <DataGridColumn>
+            <DisplayTemplate>
+                <a class="btn btn-primary" href="/users/@context.Id">Редактировать</a>
+            </DisplayTemplate>
+        </DataGridColumn>
+    </DataGridColumns>
+</DataGrid>
+
+@code {
+    private List<User> users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        users = (new DBContext()).Users.ToList();
+    }
+
+    private void OnReadData(DataGridReadDataEventArgs<User> e)
+    {
+        LoadData();
+    }
+}

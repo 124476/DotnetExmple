@@ -40,8 +40,8 @@
     <AppxPackagedFile Include="C:\Users\Aidar\source\repos\WPFExmple\Mobiles\MobileCollection\Mobile\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Aidar\source\repos\WPFExmple\Mobiles\MobileCollection\Mobile\Resources\Raw\db.db">
-      <PackagePath>db.db</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Aidar\source\repos\WPFExmple\Mobiles\MobileCollection\Mobile\Resources\Raw\database.db">
+      <PackagePath>database.db</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Aidar\source\repos\WPFExmple\Mobiles\MobileCollection\Mobile\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>

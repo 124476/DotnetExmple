@@ -12,9 +12,9 @@
             <Label>Пароль</Label>
             <Entry Text="{Binding Password}"></Entry>
             <Label>Роль</Label>
-            <Picker x:Name="ComboRoles" ItemDisplayBinding="{Binding Name}"></Picker>
+            <Picker x:Name="ComboRoles" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding Role}"></Picker>
             <Label>Начальник</Label>
-            <Picker x:Name="ComboUsers" ItemDisplayBinding="{Binding Name}"></Picker>
+            <Picker x:Name="ComboUsers" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding Lider}"></Picker>
             <Label>Предметы</Label>
             <CollectionView x:Name="CollectionItems">
                 <CollectionView.ItemTemplate>

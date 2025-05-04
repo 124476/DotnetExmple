@@ -33,6 +33,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button x:Name="BtnAdd" Clicked="BtnAdd_Clicked" Text="Добавить"></Button>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

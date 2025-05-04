@@ -19,11 +19,11 @@ namespace Mobile
         public virtual DbSet<UserItem> UserItems { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "db.db");
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "database.db");
 
             if (!File.Exists(dbPath))
             {
-                using var ms = FileSystem.OpenAppPackageFileAsync("db.db").Result;
+                using var ms = FileSystem.OpenAppPackageFileAsync("database.db").Result;
                 using var fileStream = File.Create(dbPath);
                 ms.CopyTo(fileStream);
             }
