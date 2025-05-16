@@ -1,0 +1,71 @@
+﻿<Page x:Class="Desctop.Pages.PageUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desctop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageUsers">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="ListUsers">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Начальник" Binding="{Binding User2.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Предметы" Binding="{Binding Items}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnEdit" Click="BtnEdit_Click" Width="150">Редактировать</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnDelete" Click="BtnDelete_Click" Background="Red" Width="150">Удалить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ScrollViewer Grid.Column="1" Width="200">
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBlock>Имя</TextBlock>
+                <TextBox Text="{Binding Name}"></TextBox>
+                <TextBlock>Логин</TextBlock>
+                <TextBox Text="{Binding Login}"></TextBox>
+                <TextBlock>Пароль</TextBlock>
+                <TextBox Text="{Binding Password}"></TextBox>
+                <TextBlock>Роль</TextBlock>
+                <ComboBox Name="ComboRoles" DisplayMemberPath="Name" SelectedItem="{Binding Role}"></ComboBox>
+
+                <TextBlock>Начальник</TextBlock>
+                <ComboBox Name="ComboUsers" DisplayMemberPath="Name" SelectedItem="{Binding User2}"></ComboBox>
+                
+                <TextBlock>Предметы</TextBlock>
+                <ListView Name="ListItems">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Item.Name}"></TextBlock>
+                                <Button x:Name="BtnDeleteItem" Background="Red" Click="BtnDeleteItem_Click" Margin="10,0" Width="80" FontSize="15">Удалить</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ComboBox Name="ComboItems" DisplayMemberPath="Name"></ComboBox>
+                <Button Name="BtnAdd" Click="BtnAdd_Click">Добавить</Button>
+                
+                <Button x:Name="BtnSave" Click="BtnSave_Click" Margin="0,10">Сохранить</Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
