@@ -1,45 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="WPFExmpleDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WPFExmpleDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Item" EntityType="WPFExmpleDataBaseModel.Item" />
+    <EntitySet Name="ItemImages" EntityType="WPFExmpleDataBaseModel.ItemImages" />
+    <EntitySet Name="Role" EntityType="WPFExmpleDataBaseModel.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="WPFExmpleDataBaseModel.sysdiagrams" />
+    <EntitySet Name="User" EntityType="WPFExmpleDataBaseModel.User" />
+    <EntitySet Name="UserItems" EntityType="WPFExmpleDataBaseModel.UserItems" />
+    <AssociationSet Name="FK_ItemImages_Item" Association="WPFExmpleDataBaseModel.FK_ItemImages_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemImages" EntitySet="ItemImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserItems_Item" Association="WPFExmpleDataBaseModel.FK_UserItems_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="UserItems" EntitySet="UserItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="WPFExmpleDataBaseModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User" Association="WPFExmpleDataBaseModel.FK_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserItems_User" Association="WPFExmpleDataBaseModel.FK_UserItems_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserItems" EntitySet="UserItems" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Item">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="IsPublished" Type="Boolean" />
-    <Property Name="Price" Type="Double" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
     <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Doc" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="DocFormat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="DateStart" Type="DateTime" Precision="0" />
-    <Property Name="TimeStart" Type="Time" Precision="7" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ItemImages" Relationship="Self.FK_ItemImages_Item" FromRole="Item" ToRole="ItemImages" />
-    <NavigationProperty Name="UserItems" Relationship="Self.FK_UserItems_Item" FromRole="Item" ToRole="UserItems" />
+    <NavigationProperty Name="ItemImages" Relationship="WPFExmpleDataBaseModel.FK_ItemImages_Item" FromRole="Item" ToRole="ItemImages" />
+    <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="Item" ToRole="UserItems" />
   </EntityType>
   <EntityType Name="ItemImages">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ItemId" Type="Int32" />
-    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="Item" Relationship="Self.FK_ItemImages_Item" FromRole="ItemImages" ToRole="Item" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Item" Relationship="WPFExmpleDataBaseModel.FK_ItemImages_Item" FromRole="ItemImages" ToRole="Item" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="WPFExmpleDataBaseModel.FK_User_Role" FromRole="Role" ToRole="User" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
@@ -50,29 +78,29 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="RoleId" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="UserId" Type="Int32" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-    <NavigationProperty Name="User1" Relationship="Self.FK_User_User" FromRole="User" ToRole="User1" />
-    <NavigationProperty Name="User2" Relationship="Self.FK_User_User" FromRole="User1" ToRole="User" />
-    <NavigationProperty Name="UserItems" Relationship="Self.FK_UserItems_User" FromRole="User" ToRole="UserItems" />
+    <NavigationProperty Name="Role" Relationship="WPFExmpleDataBaseModel.FK_User_Role" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="User1" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User2" Relationship="WPFExmpleDataBaseModel.FK_User_User" FromRole="User1" ToRole="User" />
+    <NavigationProperty Name="UserItems" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="User" ToRole="UserItems" />
   </EntityType>
   <EntityType Name="UserItems">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="Int32" />
-    <Property Name="ItemId" Type="Int32" />
-    <NavigationProperty Name="Item" Relationship="Self.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
-    <NavigationProperty Name="User" Relationship="Self.FK_UserItems_User" FromRole="UserItems" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="WPFExmpleDataBaseModel.FK_UserItems_Item" FromRole="UserItems" ToRole="Item" />
+    <NavigationProperty Name="User" Relationship="WPFExmpleDataBaseModel.FK_UserItems_User" FromRole="UserItems" ToRole="User" />
   </EntityType>
   <Association Name="FK_ItemImages_Item">
-    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-    <End Role="ItemImages" Type="Self.ItemImages" Multiplicity="*" />
+    <End Type="WPFExmpleDataBaseModel.Item" Role="Item" Multiplicity="1" />
+    <End Type="WPFExmpleDataBaseModel.ItemImages" Role="ItemImages" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="Id" />
@@ -83,8 +111,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserItems_Item">
-    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-    <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+    <End Type="WPFExmpleDataBaseModel.Item" Role="Item" Multiplicity="1" />
+    <End Type="WPFExmpleDataBaseModel.UserItems" Role="UserItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Item">
         <PropertyRef Name="Id" />
@@ -95,8 +123,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_User_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <End Type="WPFExmpleDataBaseModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="Id" />
@@ -107,8 +135,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_User_User">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="User1" Type="Self.User" Multiplicity="*" />
+    <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="WPFExmpleDataBaseModel.User" Role="User1" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="Id" />
@@ -119,8 +147,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserItems_User">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="UserItems" Type="Self.UserItems" Multiplicity="*" />
+    <End Type="WPFExmpleDataBaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="WPFExmpleDataBaseModel.UserItems" Role="UserItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="Id" />
@@ -130,32 +158,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WPFExmpleDataBaseEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Item" EntityType="Self.Item" />
-    <EntitySet Name="ItemImages" EntityType="Self.ItemImages" />
-    <EntitySet Name="Role" EntityType="Self.Role" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="User" EntityType="Self.User" />
-    <EntitySet Name="UserItems" EntityType="Self.UserItems" />
-    <AssociationSet Name="FK_ItemImages_Item" Association="Self.FK_ItemImages_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="ItemImages" EntitySet="ItemImages" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserItems_Item" Association="Self.FK_UserItems_Item">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="UserItems" EntitySet="UserItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="User" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="User1" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserItems_User" Association="Self.FK_UserItems_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="UserItems" EntitySet="UserItems" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

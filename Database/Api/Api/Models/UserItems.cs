@@ -16,10 +16,10 @@ namespace Api.Models
     public partial class UserItems
     {
         public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> ItemId { get; set; }
-
+        public int UserId { get; set; }
+        public int ItemId { get; set; }
         [JsonIgnore]
+
         public virtual Item Item { get; set; }
         [JsonIgnore]
         public virtual User User { get; set; }

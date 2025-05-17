@@ -9,30 +9,60 @@
 
 namespace Desctop.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.User1 = new HashSet<User>();
-            this.UserItems = new HashSet<UserItems>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public Nullable<int> RoleId { get; set; }
+        public int RoleId { get; set; }
         public Nullable<int> UserId { get; set; }
     
-        public virtual Role Role { get; set; }
+        public virtual Role Role
+        {
+            get
+            {
+                return App.Roles.FirstOrDefault(x => x.Id == RoleId);
+            }
+            set
+            {
+                RoleId = value.Id;
+            }
+        }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<User> User1 { get; set; }
-        public virtual User User2 { get; set; }
+        public virtual User User2
+        {
+            get
+            {
+                return App.Users.FirstOrDefault(x => x.Id == UserId);
+            }
+            set
+            {
+                if (value == null) return;
+                UserId = value.Id;
+            }
+        }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserItems> UserItems { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<UserItems> UserItems
+        {
+            get
+            {
+                return App.UserItemss.Where(x => x.UserId == UserId).ToList();
+            }
+        }
     }
 }

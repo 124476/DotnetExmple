@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Desctop.Pages
 {
@@ -22,47 +23,56 @@ namespace Desctop.Pages
     /// </summary>
     public partial class PageUsers : Page
     {
-        User contextUser;
+        User ContextUser;
         public PageUsers()
         {
             InitializeComponent();
             InitializeComponentRefresh();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private async void InitializeComponentRefresh()
         {
-            ComboItems.ItemsSource = (await NetManage.Get<List<Item>>("api/items")).ToList();
-            ComboRoles.ItemsSource = (await NetManage.Get<List<Role>>("api/roles")).ToList();
+            ComboItems.ItemsSource = App.Items.ToList();
+            ComboRoles.ItemsSource = App.Roles.ToList();
 
-            contextUser = new User();
+            ContextUser = new User();
 
             Refresh();
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            //if (string.IsNullOrEmpty(contextUser.Name) || string.IsNullOrEmpty(contextUser.Login)
-            //    || string.IsNullOrEmpty(contextUser.Password) || ComboRoles.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show("Заполните все поля!");
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(ContextUser.Name) || string.IsNullOrEmpty(ContextUser.Login)
+                || string.IsNullOrEmpty(ContextUser.Password) || ComboRoles.SelectedIndex == -1)
+            {
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
 
-            //var user = App.DB.User.FirstOrDefault(x => x.Login == contextUser.Login && x.Id != contextUser.Id);
+            var user = App.Users.FirstOrDefault(x => x.Login == ContextUser.Login && x.Id != ContextUser.Id);
 
-            //if (user != null)
-            //{
-            //    MessageBox.Show("Такой логин уже используется!");
-            //    return;
-            //}
+            if (user != null)
+            {
+                MessageBox.Show("Такой логин уже используется!");
+                return;
+            }
 
-            //if (contextUser.Id == 0)
-            //    App.DB.User.Add(contextUser);
-            //App.DB.SaveChanges();
+            if (ContextUser.Id == 0) await NetManage.Post("/api/users/", ContextUser);
+            else await NetManage.Put($"/api/users/{ContextUser.Id}", ContextUser);
 
-            //contextUser = new User();
+            ContextUser = new User();
 
-            //Refresh();
+            Refresh();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -70,44 +80,46 @@ namespace Desctop.Pages
             var user = (sender as Button).DataContext as User;
             if (user == null) return;
 
-            contextUser = user;
+            ContextUser = user;
 
             Refresh();
         }
 
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        private async void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //var user = (sender as Button).DataContext as User;
-            //if (user == null) return;
+            var result = MessageBox.Show("Удалить?", "Предупреждение", MessageBoxButton.YesNo);
+            if (result != MessageBoxResult.Yes) return;
 
-            //App.DB.User.Remove(user);
-            //App.DB.SaveChanges();
+            var user = (sender as Button).DataContext as User;
+            if (user == null) return;
 
-            //contextUser = new User();
+            await NetManage.Delete($"/api/users/{user.Id}");
+            
+            ContextUser = new User();
 
-            //Refresh();
+            Refresh();
         }
 
         private async void Refresh()
         {
-            DataContext = null;
-            DataContext = contextUser;
-
             ListUsers.ItemsSource = null;
-            ListUsers.ItemsSource = (await NetManage.Get<List<User>>("api/users")).ToList();
+            ListUsers.ItemsSource = App.Users;
 
             ComboUsers.ItemsSource = null;
-            ComboUsers.ItemsSource = (await NetManage.Get<List<User>>("api/users")).ToList().Where(x => x.Id != contextUser.Id).ToList();
+            ComboUsers.ItemsSource = App.Users.Where(x => x.Id != ContextUser.Id).ToList();
+
+            DataContext = null;
+            DataContext = ContextUser;
 
             RefreshItems();
         }
 
-        private void BtnDeleteItem_Click(object sender, RoutedEventArgs e)
+        private async void BtnDeleteItem_Click(object sender, RoutedEventArgs e)
         {
             var item = (sender as Button).DataContext as UserItems;
             if (item == null) return;
 
-            contextUser.UserItems.Remove(item);
+            await NetManage.Delete($"api/UserItems/{item.Id}");
 
             RefreshItems();
         }
@@ -115,17 +127,17 @@ namespace Desctop.Pages
         private void RefreshItems()
         {
             ListItems.ItemsSource = null;
-            ListItems.ItemsSource = contextUser.UserItems;
+            ListItems.ItemsSource = ContextUser.UserItems;
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             var item = ComboItems.SelectedItem as Item;
             if (item == null) return;
 
-            var itemUser = new UserItems() { User = contextUser, Item = item };
+            var itemUser = new UserItems() { User = ContextUser, Item = item };
 
-            contextUser.UserItems.Add(itemUser);
+            await NetManage.Post("api/UserItems", itemUser);
 
             RefreshItems();
         }

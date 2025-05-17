@@ -11,13 +11,24 @@ namespace Desctop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class ItemImages
     {
         public int Id { get; set; }
-        public Nullable<int> ItemId { get; set; }
+        public int ItemId { get; set; }
         public byte[] Image { get; set; }
     
-        public virtual Item Item { get; set; }
+        public virtual Item Item
+        {
+            get
+            {
+                return App.Items.FirstOrDefault(x => x.Id == ItemId);
+            }
+            set
+            {
+                ItemId = value.Id;
+            }
+        }
     }
 }

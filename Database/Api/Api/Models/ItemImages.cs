@@ -16,7 +16,7 @@ namespace Api.Models
     public partial class ItemImages
     {
         public int Id { get; set; }
-        public Nullable<int> ItemId { get; set; }
+        public int ItemId { get; set; }
         public byte[] Image { get; set; }
 
         [JsonIgnore]

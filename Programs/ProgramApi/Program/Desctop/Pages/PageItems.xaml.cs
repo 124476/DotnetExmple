@@ -43,7 +43,7 @@ namespace Desctop.Pages
             DataContext = contextItem;
 
             ListItems.ItemsSource = null;
-            ListItems.ItemsSource = (await NetManage.Get<List<Item>>("api/items")).ToList();
+            ListItems.ItemsSource = App.Items.ToList();
 
             ComboHours.SelectedIndex = contextItem.Hour;
             ComboMinutes.SelectedIndex = contextItem.Minute;

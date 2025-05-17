@@ -31,7 +31,7 @@ namespace Desctop.Pages
 
         private async void Refresh()
         {
-            ListRoles.ItemsSource = (await NetManage.Get<List<Role>>("api/roles")).ToList();
+            ListRoles.ItemsSource = App.Roles.ToList();
         }
     }
 }

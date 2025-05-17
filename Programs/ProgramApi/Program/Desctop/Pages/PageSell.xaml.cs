@@ -38,7 +38,7 @@ namespace Desctop.Pages
             var dateEnd = DateEnd.SelectedDate;
             var search = TextSearch.Text.ToLower();
 
-            var items = (await NetManage.Get<List<Item>>("api/items")).ToList();
+            var items = App.Items.ToList();
 
             items = items.Where(x => x.IsPublished == true).ToList();
 

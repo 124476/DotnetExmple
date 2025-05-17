@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fd537486dee54c32a5d3114f12bde82d" Name="Diagram1">
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.Item" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.ItemImages" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.UserItems" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_ItemImages_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_UserItems_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_User_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_User_User" ManuallyRouted="false" />
-        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_UserItems_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.Item" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.ItemImages" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.Role" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.User" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="WPFExmpleDataBaseModel.UserItems" Width="1.5" PointX="5.25" PointY="1.5" />
+        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_ItemImages_Item" />
+        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_UserItems_Item" />
+        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_User_Role" />
+        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_User_User" />
+        <AssociationConnector Association="WPFExmpleDataBaseModel.FK_UserItems_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,7 +32,7 @@ namespace Desctop.Pages
             var login = Login.Text;
             var password = Password.Text;
 
-            App.User = (await NetManage.Get<List<User>>("/api/users")).ToList().FirstOrDefault(x => x.Login == Login.Text && x.Password == Password.Text);
+            App.User = App.Users.FirstOrDefault(x => x.Login == Login.Text && x.Password == Password.Text);
 
             if (App.User == null)
             {

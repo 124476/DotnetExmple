@@ -18,5 +18,31 @@ namespace Desctop.Servies
             var data = JsonConvert.DeserializeObject<T>(content);
             return data;
         }
+        public static async Task<HttpResponseMessage> Post<T>(string controller, T data)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            var responce = await httpClient.PostAsync("https://localhost:44359/" + controller, content);
+
+            App.InitData();
+
+            return responce;
+        }
+        public static async Task<HttpResponseMessage> Put<T>(string controller, T data)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            var responce = await httpClient.PutAsync("https://localhost:44359/" + controller, content);
+
+            App.InitData();
+
+            return responce;
+        }
+        public static async Task<HttpResponseMessage> Delete(string controller)
+        {
+            var response = await httpClient.DeleteAsync("https://localhost:44359/" + controller);
+
+            App.InitData();
+
+            return response;
+        }
     }
 }

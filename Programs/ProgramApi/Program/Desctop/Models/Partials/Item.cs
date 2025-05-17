@@ -15,7 +15,7 @@ namespace Desctop.Models
             {
                 if (TimeStart == null)
                     TimeStart = new TimeSpan(1, 0, 0);
-                return TimeStart.Value.Hours;
+                return TimeStart.Hours;
             }
         }
         public int Minute
@@ -25,7 +25,7 @@ namespace Desctop.Models
                 if (TimeStart == null)
                     TimeStart = new TimeSpan(1, 0, 0);
 
-                return TimeStart.Value.Minutes;
+                return TimeStart.Minutes;
             }
         }
         public bool IsFile

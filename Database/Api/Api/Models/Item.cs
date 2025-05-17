@@ -24,14 +24,14 @@ namespace Api.Models
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> IsPublished { get; set; }
-        public Nullable<double> Price { get; set; }
-        public Nullable<int> Count { get; set; }
+        public bool IsPublished { get; set; }
+        public double Price { get; set; }
+        public int Count { get; set; }
         public byte[] Image { get; set; }
         public byte[] Doc { get; set; }
         public string DocFormat { get; set; }
-        public Nullable<System.DateTime> DateStart { get; set; }
-        public Nullable<System.TimeSpan> TimeStart { get; set; }
+        public System.DateTime DateStart { get; set; }
+        public System.TimeSpan TimeStart { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

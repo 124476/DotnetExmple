@@ -11,14 +11,35 @@ namespace Desctop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class UserItems
     {
         public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> ItemId { get; set; }
+        public int UserId { get; set; }
+        public int ItemId { get; set; }
     
-        public virtual Item Item { get; set; }
-        public virtual User User { get; set; }
+        public virtual Item Item
+        {
+            get
+            {
+                return App.Items.FirstOrDefault(x => x.Id == ItemId);
+            }
+            set
+            {
+                ItemId = value.Id;
+            }
+        }
+        public virtual User User
+        {
+            get
+            {
+                return App.Users.FirstOrDefault(x => x.Id == UserId);
+            }
+            set
+            {
+                UserId = value.Id;
+            }
+        }
     }
 }
