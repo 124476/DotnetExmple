@@ -55,14 +55,5 @@ namespace Desctop.Models
                 UserId = value.Id;
             }
         }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<UserItems> UserItems
-        {
-            get
-            {
-                return App.UserItemss.Where(x => x.UserId == UserId).ToList();
-            }
-        }
     }
 }

@@ -1,0 +1,95 @@
+﻿@page "/items/{id:int}"
+
+@using Web.Models
+@using Web.Servies
+
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<div style="display: flex; flex-direction: column;">
+    <h3>Предмет</h3>
+    <label>Название</label>
+    <input @bind="ContextItem.Name" />
+    <label>Опубликован</label>
+    <input type="checkbox" @bind="ContextItem.IsPublished" />
+    <label>Цена</label>
+    <input type="number" @bind="ContextItem.Price" />
+    <label>Количество</label>
+    <input type="number" step="1" @bind="ContextItem.Count"/>
+    <label>Файл</label>
+    <input @bind="ContextItem.Name" />
+    <label>Дата</label>
+    <input type="date" @bind="ContextItem.DateStart" />
+    <label>Время</label>
+    <input type="time" @bind="ContextItem.TimeStart" />
+    <label>Описание</label>
+    <input @bind="ContextItem.Description" />
+    <label>Фото</label>
+    <img src="@ContextItem.Photo" width="200" height="200" />
+    <InputFile OnChange="BtnUplodePhoto" accept=".png, .jpg, .jpeg"></InputFile>
+    <InputFile OnChange="BtnUplodeFile">Загрузить файл</InputFile>
+    <label style="color: red">@Error</label>
+
+    <button @onclick="BtnSave">Сохранить</button>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Item ContextItem;
+
+    private string Error = "";
+
+    protected override void OnInitialized()
+    {
+        ContextItem = DataManage.Items.FirstOrDefault(x => x.Id == Id);
+        if (ContextItem == null) ContextItem = new Item();
+    }
+
+    private async void BtnUplodePhoto(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null)
+            return;
+
+        using (var ms = new MemoryStream())
+        {
+            await file.OpenReadStream(10 * 1024 * 1024).CopyToAsync(ms);
+            ContextItem.Image = ms.ToArray();
+        }
+    }
+
+    private async void BtnUplodeFile(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null)
+            return;
+
+        var fileExtension = Path.GetExtension(file.Name).ToLower();
+
+        using (var ms = new MemoryStream())
+        {
+            await file.OpenReadStream(10 * 1024 * 1024).CopyToAsync(ms);
+            ContextItem.Doc = ms.ToArray();
+            ContextItem.DocFormat = fileExtension.Substring(1);
+        }
+    }
+
+    private async void BtnSave()
+    {
+        try
+        {
+            if (ContextItem.Id == 0)
+                await NetManage.Post("/api/Items", ContextItem);
+            else await NetManage.Put($"api/Items/{ContextItem.Id}", ContextItem);
+        }
+        catch
+        {
+            Error = "Заполните все поля корректными данными";
+            return;
+        }
+
+        Navigation.NavigateTo("/items");
+    }
+}

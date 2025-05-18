@@ -24,7 +24,7 @@ namespace Desctop.Pages
     /// </summary>
     public partial class PageItems : Page
     {
-        Item contextItem;
+        Item ContextItem;
         public PageItems()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace Desctop.Pages
             ComboHours.ItemsSource = Enumerable.Range(0, 24).Select(x => x.ToString("00")).ToList();
             ComboMinutes.ItemsSource = Enumerable.Range(0, 60).Select(x => x.ToString("00")).ToList();
 
-            contextItem = new Item();
+            ContextItem = new Item();
 
             Refresh();
         }
@@ -40,13 +40,14 @@ namespace Desctop.Pages
         private async void Refresh()
         {
             DataContext = null;
-            DataContext = contextItem;
 
             ListItems.ItemsSource = null;
             ListItems.ItemsSource = App.Items.ToList();
 
-            ComboHours.SelectedIndex = contextItem.Hour;
-            ComboMinutes.SelectedIndex = contextItem.Minute;
+            ComboHours.SelectedIndex = ContextItem.Hour;
+            ComboMinutes.SelectedIndex = ContextItem.Minute;
+
+            DataContext = ContextItem;
         }
 
         private void BtnDownload_Click(object sender, RoutedEventArgs e)
@@ -69,22 +70,21 @@ namespace Desctop.Pages
             var item = (sender as Button).DataContext as Item;
             if (item == null) return;
 
-            contextItem = item;
+            ContextItem = item;
 
             Refresh();
         }
 
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        private async void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //var item = (sender as Button).DataContext as Item;
-            //if (item == null) return;
+            var item = (sender as Button).DataContext as Item;
+            if (item == null) return;
 
-            //App.DB.Item.Remove(item);
-            //App.DB.SaveChanges();
+            await NetManage.Delete($"/api/Items/{item.Id}");
 
-            //contextItem = new Item();
+            ContextItem = new Item();
 
-            //Refresh();
+            Refresh();
         }
 
         private void ComboHours_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -94,7 +94,7 @@ namespace Desctop.Pages
 
         private void RefreshTimeItem()
         {
-            contextItem.TimeStart = new TimeSpan(ComboHours.SelectedIndex, ComboMinutes.SelectedIndex, 0);
+            ContextItem.TimeStart = new TimeSpan(ComboHours.SelectedIndex, ComboMinutes.SelectedIndex, 0);
         }
 
         private void ComboMinutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,21 +102,21 @@ namespace Desctop.Pages
             RefreshTimeItem();
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            //if (string.IsNullOrEmpty(contextItem.Name) || contextItem.DateStart == null)
-            //{
-            //    MessageBox.Show("Заполните обязательные поля!");
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(ContextItem.Name) || ContextItem.DateStart == null)
+            {
+                MessageBox.Show("Заполните обязательные поля!");
+                return;
+            }
 
-            //if (contextItem.Id == 0)
-            //    App.DB.Item.Add(contextItem);
-            //App.DB.SaveChanges();
+            if (ContextItem.Id == 0)
+                await NetManage.Post("/api/Items", ContextItem);
+            else await NetManage.Put($"/api/Items/{ContextItem.Id}", ContextItem);
 
-            //contextItem = new Item();
+            ContextItem = new Item();
 
-            //Refresh();
+            Refresh();
         }
 
         private void BtnUplode_Click(object sender, RoutedEventArgs e)
@@ -124,7 +124,7 @@ namespace Desctop.Pages
             var dialog = new OpenFileDialog() { Filter = "*.png; *.jpeg; *.jpeg; | .png; *.jpeg; *.jpeg;" };
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                contextItem.Image = File.ReadAllBytes(dialog.FileName);
+                ContextItem.Image = File.ReadAllBytes(dialog.FileName);
 
                 Refresh();
             }
@@ -135,8 +135,8 @@ namespace Desctop.Pages
             var dialog = new OpenFileDialog();
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                contextItem.Doc = File.ReadAllBytes(dialog.FileName);
-                contextItem.DocFormat = System.IO.Path.GetExtension(dialog.FileName).Substring(1);
+                ContextItem.Doc = File.ReadAllBytes(dialog.FileName);
+                ContextItem.DocFormat = System.IO.Path.GetExtension(dialog.FileName).Substring(1);
 
                 Refresh();
             }

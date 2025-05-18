@@ -1,0 +1,37 @@
+﻿@page "/login"
+@using Web.Servies
+@layout Layout.AuthLayout
+
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<div style="display: flex; flex-direction: column; justify-self: center;">
+    <h3>Авторизация</h3>  
+    <label>Логин</label>
+    <input @bind="Login"/>
+    <label>Пароль</label>
+    <input @bind="Password" />
+    <label style="color: red;">@Error</label>
+
+    <button @onclick="BtnLogin">Войти</button>
+</div>
+
+@code {
+    private string Login = "";
+    private string Password = "";
+
+    private string Error = "";
+
+    private void BtnLogin()
+    {
+        DataManage.User = DataManage.Users.FirstOrDefault(x => x.Login == Login && x.Password == Password);
+        if (DataManage.User == null)
+        {
+            Error = "Неверные данные";
+            return;
+        };
+
+        Navigation.NavigateTo("/items");
+    }
+}

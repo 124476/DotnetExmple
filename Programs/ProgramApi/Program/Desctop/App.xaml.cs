@@ -27,15 +27,18 @@ namespace Desctop
         {
             DispatcherUnhandledException += App_DispatcherUnhandledException;
 
-            App.InitData();
+            Task.Run(async () =>
+            {
+                await App.InitData();
+            }).Wait();
         }
-        public static async void InitData()
+        public static async Task InitData()
         {
-            Users = (await NetManage.Get<List<User>>("api/Users")).ToList();
-            Roles = (await NetManage.Get<List<Role>>("api/Roles")).ToList();
-            Items = (await NetManage.Get<List<Item>>("api/Items")).ToList();
-            UserItemss = (await NetManage.Get<List<UserItems>>("api/UserItems")).ToList();
-            ItemImagess = (await NetManage.Get<List<ItemImages>>("api/ItemImages")).ToList();
+            Users = await NetManage.Get<List<User>>("api/Users");
+            Roles = await NetManage.Get<List<Role>>("api/Roles");
+            Items = await NetManage.Get<List<Item>>("api/Items");
+            UserItemss = await NetManage.Get<List<UserItems>>("api/UserItems");
+            ItemImagess = await NetManage.Get<List<ItemImages>>("api/ItemImages");
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

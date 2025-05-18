@@ -1,0 +1,1 @@
+C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileApi\Mobile\Mobile.csproj;x64

@@ -23,7 +23,7 @@ namespace Desctop.Servies
             var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             var responce = await httpClient.PostAsync("https://localhost:44359/" + controller, content);
 
-            App.InitData();
+            await App.InitData();
 
             return responce;
         }
@@ -32,7 +32,7 @@ namespace Desctop.Servies
             var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             var responce = await httpClient.PutAsync("https://localhost:44359/" + controller, content);
 
-            App.InitData();
+            await App.InitData();
 
             return responce;
         }
@@ -40,7 +40,7 @@ namespace Desctop.Servies
         {
             var response = await httpClient.DeleteAsync("https://localhost:44359/" + controller);
 
-            App.InitData();
+            await App.InitData();
 
             return response;
         }

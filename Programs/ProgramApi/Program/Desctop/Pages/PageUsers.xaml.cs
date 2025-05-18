@@ -27,23 +27,6 @@ namespace Desctop.Pages
         public PageUsers()
         {
             InitializeComponent();
-            InitializeComponentRefresh();
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            Refresh();
-        }
-
-        private async void InitializeComponentRefresh()
-        {
-            ComboItems.ItemsSource = App.Items.ToList();
-            ComboRoles.ItemsSource = App.Roles.ToList();
 
             ContextUser = new User();
 
@@ -102,14 +85,33 @@ namespace Desctop.Pages
 
         private async void Refresh()
         {
+            DataContext = null;
+
+            ComboItems.ItemsSource = null;
+            ComboItems.ItemsSource = App.Items.ToList();
+
+            ComboRoles.ItemsSource = null;
+            ComboRoles.ItemsSource = App.Roles.ToList();
+
             ListUsers.ItemsSource = null;
             ListUsers.ItemsSource = App.Users;
 
             ComboUsers.ItemsSource = null;
             ComboUsers.ItemsSource = App.Users.Where(x => x.Id != ContextUser.Id).ToList();
 
-            DataContext = null;
             DataContext = ContextUser;
+
+            RefreshItems();
+        }
+
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var item = ComboItems.SelectedItem as Item;
+            if (item == null) return;
+
+            var itemUser = new UserItems() { User = ContextUser, Item = item };
+
+            await NetManage.Post("api/UserItems", itemUser);
 
             RefreshItems();
         }
@@ -127,19 +129,7 @@ namespace Desctop.Pages
         private void RefreshItems()
         {
             ListItems.ItemsSource = null;
-            ListItems.ItemsSource = ContextUser.UserItems;
-        }
-
-        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var item = ComboItems.SelectedItem as Item;
-            if (item == null) return;
-
-            var itemUser = new UserItems() { User = ContextUser, Item = item };
-
-            await NetManage.Post("api/UserItems", itemUser);
-
-            RefreshItems();
+            ListItems.ItemsSource = App.UserItemss.Where(x => x.UserId == ContextUser.Id).ToList();
         }
     }
 }

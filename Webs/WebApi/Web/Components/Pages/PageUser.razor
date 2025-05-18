@@ -1,0 +1,122 @@
+﻿@page "/users/{id:int}"
+
+@using Web.Models
+@using Web.Servies
+
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<div style="display: grid; grid-template-columns: 1fr 3fr;">
+    <div style="display: flex; flex-direction: column; justify-self: center; grid-column: 1;">
+        <h3>Пользователь</h3>
+        <label>Имя</label>
+        <input @bind="@ContextUser.Name" />
+        <label>Логин</label>
+        <input @bind="@ContextUser.Login" />
+        <label>Пароль</label>
+        <input @bind="@ContextUser.Password" />
+        <label>Роль</label>
+        <select @bind="ContextUser.RoleId">
+            @foreach (var role in DataManage.Roles.ToList())
+            {
+                <option value="@role.Id">@role.Name</option>
+            }
+        </select>
+        <label>Начальник</label>
+        <select @bind="ContextUser.UserId">
+            @foreach (var user in DataManage.Users.ToList())
+            {
+                <option value="@user.Id">@user.Name</option>
+            }
+        </select>
+        <label style="color: red;">@Error</label>
+
+        <button @onclick="BtnSave">Сохранить</button>
+    </div>
+    <div style="display: flex; flex-direction: column; grid-column: 2;">
+        <label>Предметы</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in DataManage.UserItems.Where(x => x.UserId == ContextUser.Id))
+                {
+                    <tr>
+                        <th>@item.Item.Name</th>
+                        <th><button @onclick="() => BtnDeleteItem(item.Id)">Удалить</button></th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <select @bind="ItemId">
+            @foreach (var item in DataManage.Items.ToList())
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <button @onclick="BtnAdd">Добавить</button>
+    </div>
+</div>
+
+
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private string Error = "";
+
+    private User ContextUser;
+    private List<UserItem> Items = new List<UserItem>();
+
+    private int ItemId;
+
+    protected override void OnInitialized()
+    {
+        ContextUser = DataManage.Users.FirstOrDefault(x => x.Id == Id);
+        if (ContextUser == null) ContextUser = new User();
+
+        Items = DataManage.UserItems.Where(x => x.UserId == ContextUser.Id).ToList();
+    }
+
+    private async void BtnSave()
+    {
+        try
+        {
+            if (ContextUser.Id == 0)
+                await NetManage.Post("/api/Users", ContextUser);
+            else await NetManage.Put($"/api/Users/{ContextUser.Id}", ContextUser);
+        }
+        catch
+        {
+            Error = "Заполните все поля корректными данными";
+            return;
+        }
+
+        Navigation.NavigateTo("/users");
+    }
+
+    private async void BtnDeleteItem(int itemId)
+    {
+        var item = DataManage.UserItems.Where(x => x.UserId == ContextUser.Id).FirstOrDefault(x => x.Id == itemId);
+
+        await NetManage.Delete($"api/UserItems/{item.Id}");
+    }
+
+    private async void BtnAdd()
+    {
+        var item = DataManage.Items.FirstOrDefault(x => x.Id == ItemId);
+        if (item == null) return;
+
+        if (!DataManage.UserItems.Where(x => x.UserId == ContextUser.Id).Select(x => x.ItemId).Contains(ItemId))
+        {
+            var userItem = new UserItem() { UserId = ContextUser.Id, ItemId = ItemId, Item = item, };
+
+            await NetManage.Post("/api/UserItems", userItem);
+        }
+    }
+}

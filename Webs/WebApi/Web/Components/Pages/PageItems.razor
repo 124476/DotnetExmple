@@ -1,0 +1,66 @@
+﻿@page "/items"
+
+@using Web.Models
+@using Blazorise.DataGrid
+@using Web.Servies
+
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<div style="display: flex; flex-direction: row; justify-content: space-between">
+    <h3>Предметы</h3>
+    <a class="btn btn-primary" href="/items/0">Добавить</a>
+</div>
+
+<DataGrid TItem="Item" Data="@items" ReadData="@OnReadData">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(Item.Id)" Caption="ID" />
+        <DataGridColumn Field="@nameof(Item.Name)" Caption="Название" />
+        <DataGridColumn Field="@nameof(Item.Price)" Caption="Цена" />
+        <DataGridColumn Field="@nameof(Item.Count)" Caption="Количество" />
+        <DataGridColumn Field="@nameof(Item.IsPublished)" Caption="Опубликован" />
+        <DataGridColumn Field="@nameof(Item.DateStart)" Caption="Дата" />
+        <DataGridColumn Field="@nameof(Item.TimeStart)" Caption="Время" />
+        <DataGridColumn Field="@nameof(Item.Description)" Caption="Описание" />
+        <DataGridColumn Caption="Файл">
+            <DisplayTemplate>
+                @if (context.Document != "")
+                {
+                    <a class="btn btn-primary" href="@context.Document" download="@(context.Name).@(context.DocFormat)">Скачать</a>
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Caption="Картинка">
+            <DisplayTemplate>
+                <img src="@context.Photo" width="200" height="200" />
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Caption="">
+            <DisplayTemplate>
+                <a class="btn btn-primary" href="/items/@context.Id">Редактировать</a>
+            </DisplayTemplate>
+        </DataGridColumn>
+    </DataGridColumns>
+</DataGrid>
+
+@code {
+    private List<Item> items;
+
+    private Item SelectedItem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        items = DataManage.Items;
+    }
+
+    private void OnReadData(DataGridReadDataEventArgs<Item> e)
+    {
+        LoadData();
+    }
+}

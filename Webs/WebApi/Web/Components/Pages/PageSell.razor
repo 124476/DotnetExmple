@@ -1,0 +1,122 @@
+﻿@page "/sell"
+
+@layout Layout.AuthLayout
+
+@using Web.Models
+@using Blazorise.DataGrid
+@using Web.Servies
+
+@rendermode InteractiveServer
+
+<h3>Магазин</h3>
+
+<div style="display: flex; flex-direction: column;">
+    <div style="direction: flex; flex-direction: row;">
+        <label>Дата начала</label>
+        <input type="date" @bind="DateStart" />
+        <label>Дата конца</label>
+        <input type="date" @bind="DateEnd" />
+        <label>Поиск:</label>
+        <input @bind="TextSearch"/>
+    </div>
+    <DataGrid TItem="Item"
+              Data="@items"
+              ReadData="@OnReadData"
+              TotalItems="@totalItems"
+              ShowPager="true"
+              PageSize="5"
+              Sortable="true"
+              @ref="dataGrid">
+
+        <DataGridColumns>
+            <DataGridColumn Field="@nameof(Item.Id)" Caption="ID" Sortable="true" />
+            <DataGridColumn Field="@nameof(Item.Name)" Caption="Название" Sortable="true" />
+            <DataGridColumn Field="@nameof(Item.DateStart)" Caption="Дата" Sortable="true" />
+            <DataGridColumn Caption="Картинка">
+                <DisplayTemplate>
+                    <img src="@context.Photo" width="200" height="200" />
+                </DisplayTemplate>
+            </DataGridColumn>
+        </DataGridColumns>
+    </DataGrid>
+</div>
+
+@code {
+    private DateTime? dateStart;
+    private DateTime? dateEnd;
+    private string textSearch = "";
+
+    private DateTime? DateStart
+    {
+        get
+        {
+            return dateStart;
+        }
+        set
+        {
+            dateStart = value;
+
+            dataGrid.Reload();
+        }
+    }
+    private DateTime? DateEnd
+    {
+        get
+        {
+            return dateEnd;
+        }
+        set
+        {
+            dateEnd = value;
+
+            dataGrid.Reload();
+        }
+    }
+    private string TextSearch
+    {
+        get
+        {
+            return textSearch;
+        }
+        set
+        {
+            textSearch = value;
+
+            dataGrid.Reload();
+        }
+    }
+
+    private List<Item> items;
+    private int totalItems;
+
+    private DataGrid<Item> dataGrid;
+
+    protected override async Task OnInitializedAsync()
+    {
+        LoadData();
+    }
+
+    private void OnReadData(DataGridReadDataEventArgs<Item> e)
+    {
+        LoadData(e.Page, e.PageSize);
+    }
+
+    private void LoadData(int page = 1, int pageSize = 5)
+    {
+        items = DataManage.Items.ToList();
+        
+        items = items.Where(x => x.IsPublished).ToList();
+
+        if (DateStart != null)
+            items = items.Where(x => DateStart <= x.DateStart).ToList();
+
+        if (DateEnd != null)
+            items = items.Where(x => x.DateStart <= DateEnd).ToList();
+
+        items = items.Where(x => x.Name.ToLower().Contains(TextSearch)).ToList();
+
+        totalItems = items.Count();
+
+        items = items.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+    }
+}

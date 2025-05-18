@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.PageSell"
+             Title="Магазин">
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label>Начало:</Label>
+                    <DatePicker x:Name="DateStart" DateSelected="DateStart_DateSelected" Date="04.05.2025"></DatePicker>
+                </StackLayout>
+                <StackLayout>
+                    <Label>Конец:</Label>
+                    <DatePicker x:Name="DateEnd" DateSelected="DateEnd_DateSelected" Date="04.05.2025"></DatePicker>
+                </StackLayout>
+                <StackLayout>
+                    <Label>Поиск</Label>
+                    <Entry x:Name="TextSearch" TextChanged="TextSearch_TextChanged" Text=""></Entry>
+                </StackLayout>
+            </StackLayout>
+            
+            <CollectionView x:Name="CollectionItems">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"></LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#219EEE">
+                            <Grid ColumnDefinitions="*,2*">
+                                <Image Source="{Binding ImageSource}"></Image>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="{Binding Name}"></Label>
+                                    <Label Text="{Binding DateStart, StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                                    <Label Text="{Binding Description}"></Label>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="50,*,50">
+                <Button x:Name="BtnDown" Clicked="BtnDown_Clicked" Text="&lt;"></Button>
+                <Label x:Name="TextDate" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                <Button x:Name="BtnUp" Clicked="BtnUp_Clicked"  Text="&gt;" Grid.Column="2"></Button>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

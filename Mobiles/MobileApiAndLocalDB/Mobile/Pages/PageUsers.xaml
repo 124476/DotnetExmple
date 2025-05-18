@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.PageUsers"
+             Title="Пользователи"
+             Appearing="ContentPage_Appearing">
+    <ScrollView>
+        <VerticalStackLayout>
+            <CollectionView x:Name="CollectionUsers">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"></LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#219EEE">
+                            <StackLayout>
+                                <Grid ColumnDefinitions="*,*">
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}"></Label>
+                                        <Label Text="{Binding Login}"></Label>
+                                        <Label Text="{Binding Role.Name}"></Label>
+                                        <Label Text="{Binding User.Name, StringFormat='Начальник: {0}'}"></Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label>Предметы:</Label>
+                                        <Label Text="{Binding Items}"></Label>
+                                    </StackLayout>
+                                </Grid>
+                                <Button x:Name="BtnEdit" Clicked="BtnEdit_Clicked" Text="Редактировать"></Button>
+                                <Button x:Name="BtnRemove" Clicked="BtnRemove_Clicked"  Text="Удалить" Background="Red"></Button>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="BtnAdd" Clicked="BtnAdd_Clicked" Text="Добавить"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

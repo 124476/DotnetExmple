@@ -12,7 +12,7 @@ namespace Desctop.Models
         {
             get
             {
-                var items = UserItems.Select(x => x.Item.Name).ToList();
+                var items = App.UserItemss.Where(x => x.UserId == Id).Select(x => x.Item.Name).ToList();
                 return string.Join("\n", items);
             }
         }

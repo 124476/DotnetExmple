@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.PageUser"
+             Title="Пользователь">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label>Имя</Label>
+            <Entry Text="{Binding Name}"></Entry>
+            <Label>Логин</Label>
+            <Entry Text="{Binding Login}"></Entry>
+            <Label>Пароль</Label>
+            <Entry Text="{Binding Password}"></Entry>
+            <Label>Роль</Label>
+            <Picker x:Name="ComboRoles" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding Role}"></Picker>
+            <Label>Начальник</Label>
+            <Picker x:Name="ComboUsers" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding Lider}"></Picker>
+            <Label>Предметы</Label>
+            <CollectionView x:Name="CollectionItems">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,2*">
+                            <Label Text="{Binding Item.Name}"></Label>
+                            <Button x:Name="BtnDelete" Clicked="BtnDelete_Clicked" Text="Удалить" Background="Red" Grid.Column="1"></Button>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Picker x:Name="ComboItems" ItemDisplayBinding="{Binding Name}"></Picker>
+            <Button x:Name="BtnAdd" Clicked="BtnAdd_Clicked" Text="Добавить"></Button>
+            <Button x:Name="BtnSave" Clicked="BtnSave_Clicked"  Text="Сохранить"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
