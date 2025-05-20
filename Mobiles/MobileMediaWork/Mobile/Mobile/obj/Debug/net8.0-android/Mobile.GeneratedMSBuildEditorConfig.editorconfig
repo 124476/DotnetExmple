@@ -1,0 +1,73 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Mobile
+build_property.ProjectDir = C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Pages/PageAudio.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageAudio.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageAudio.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageAudio.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Pages/PageMain.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageMain.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageMain.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageMain.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Pages/PagePhoto.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PagePhoto.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PagePhoto.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PagePhoto.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Pages/PageVideo.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Pages.PageVideo.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\PageVideo.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\PageVideo.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/art82/source/repos/WPFExmple/Mobiles/MobileMediaWork/Mobile/Mobile/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Mobile.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

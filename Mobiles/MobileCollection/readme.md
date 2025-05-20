@@ -100,25 +100,15 @@ public partial class App : Application
     }
 ```
 
-## Команды
-
-```
-dotnet ef migrations add InitialCreate
-```
-
-```
-dotnet ef database update
-```
-
 ## ВАЖНО
 
-первоначально бд надо создать без
+первоначально бд надо создать с такими строками:
 ```
 if (!File.Exists(dbPath))
 {
-    using var ms = FileSystem.OpenAppPackageFileAsync("db.db").Result;
+    // using var ms = FileSystem.OpenAppPackageFileAsync("db.db").Result;
     using var fileStream = File.Create(dbPath);
-    ms.CopyTo(fileStream);
+    // ms.CopyTo(fileStream);
 }
 ```
 

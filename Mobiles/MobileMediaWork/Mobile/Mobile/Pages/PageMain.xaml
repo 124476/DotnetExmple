@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.PageMain"
+             Title="Медиа"
+             Appearing="ContentPage_Appearing">
+    <VerticalStackLayout>
+        <CollectionView x:Name="ListUserDatas">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Type}"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Button x:Name="BtnEdit" Clicked="BtnEdit_Clicked" Text="Изменить"></Button>
+                            <Button x:Name="BtnDelete" Clicked="BtnDelete_Clicked" Text="Удалить"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button x:Name="BtnAddPhoto" Clicked="BtnAddPhoto_Clicked" Text="Добавить фото"></Button>
+        <Button x:Name="BtnAddVideo" Clicked="BtnAddVideo_Clicked"  Text="Добавить видео"></Button>
+        <Button x:Name="BtnAddAudio" Clicked="BtnAddAudio_Clicked"  Text="Добавить аудио"></Button>
+    </VerticalStackLayout>
+</ContentPage>
