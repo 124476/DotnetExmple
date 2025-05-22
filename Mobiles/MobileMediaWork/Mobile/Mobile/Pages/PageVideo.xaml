@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Mobile.Pages.PageVideo"
-             Title="PageVideo">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Видео">
+    <ScrollView>
+        <VerticalStackLayout>
+            <cv:CameraView x:Name="cameraView" HeightRequest="500"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Начать запись" x:Name="BtnStart"  Clicked="BtnStart_Clicked"/>
+                <Button Text="Завершить запись" x:Name="BtnEnd"  Clicked="BtnEnd_Clicked"/>
+                <Button Text="Переключить камеру" x:Name="BtnSetCamera" Clicked="BtnSetCamera_Clicked"/>
+            </StackLayout>
+
+            <Entry Text="{Binding Name}" Placeholder="Введите название"/>
+
+            <toolkit:MediaElement Source="{Binding Data}" ShouldAutoPlay="False" ShouldShowPlaybackControls="True" HeightRequest="300" WidthRequest="200" />
+
+            <Button Text="Сохранить" x:Name="BtnSave" Clicked="BtnSave_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

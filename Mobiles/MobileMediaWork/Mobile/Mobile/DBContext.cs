@@ -18,7 +18,7 @@ namespace Mobile
 
             if (!File.Exists(dbPath))
             {
-                using var ms = FileSystem.OpenAppPackageFileAsync("database.db").Result;
+                using var ms = FileSystem.OpenAppPackageFileAsync("databasemedia.db").Result;
                 using var fileStream = File.Create(dbPath);
                 ms.CopyTo(fileStream);
             }

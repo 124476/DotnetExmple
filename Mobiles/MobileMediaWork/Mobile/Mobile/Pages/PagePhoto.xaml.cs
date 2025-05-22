@@ -11,11 +11,13 @@ public partial class PagePhoto : ContentPage
     {
         InitializeComponent();
 
-        if (UserData.Id != 0)
-        {
-            NameUserData.Text = UserData.Name;
-            photoImage.Source = ImageSource.FromFile(UserData.Data);
-        }
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        BindingContext = null;
+        BindingContext = UserData;
     }
 
     private async void TakePhotoButton_Clicked(object sender, EventArgs e)
@@ -44,8 +46,8 @@ public partial class PagePhoto : ContentPage
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _photo = ImageSource.FromFile(imageFile);
-                        photoImage.Source = _photo;
+                        UserData.Data = imageFile;
+                        Refresh();
                     });
                 },
             }.Show(this, dir);
@@ -54,15 +56,8 @@ public partial class PagePhoto : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        var userData = new UserData()
-        {
-            TypeUserDataId = 1,
-            Name = NameUserData.Text,
-            Data = dir,
-        };
-
-        if (userData.Id == 0)
-            App.DB.UserDatas.Add(userData);
+        if (UserData.Id == 0)
+            App.DB.UserDatas.Add(UserData);
         App.DB.SaveChanges();
 
         await Navigation.PopAsync();

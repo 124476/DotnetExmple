@@ -33,19 +33,19 @@ public partial class PageMain : ContentPage
 
     private async void BtnAddPhoto_Clicked(object sender, EventArgs e)
     {
-        PagePhoto.UserData = new UserData();
+        PagePhoto.UserData = new UserData() { TypeUserDataId = 1, };
         await Navigation.PushAsync(new PagePhoto());
     }
 
     private async void BtnAddVideo_Clicked(object sender, EventArgs e)
     {
-        PageVideo.UserData = new UserData();
+        PageVideo.UserData = new UserData() { TypeUserDataId = 2, };
         await Navigation.PushAsync(new PageVideo());
     }
 
     private async void BtnAddAudio_Clicked(object sender, EventArgs e)
     {
-        PageAudio.UserData = new UserData();
+        PageAudio.UserData = new UserData() { TypeUserDataId = 3, };
         await Navigation.PushAsync(new PageAudio());
     }
 

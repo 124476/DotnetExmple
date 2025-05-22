@@ -79,13 +79,13 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
-            "CommunityToolkit.Mvvm": {
-              "target": "Package",
-              "version": "[8.1.0, )"
-            },
             "ImageCropper.Maui": {
               "target": "Package",
               "version": "[1.1.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -101,9 +101,15 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
@@ -118,10 +124,6 @@
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
-            },
-            "Newtonsoft.Json.Bson": {
-              "target": "Package",
-              "version": "[1.0.3, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -164,13 +166,13 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
-            "CommunityToolkit.Mvvm": {
-              "target": "Package",
-              "version": "[8.1.0, )"
-            },
             "ImageCropper.Maui": {
               "target": "Package",
               "version": "[1.1.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -186,9 +188,15 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
@@ -203,10 +211,6 @@
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
-            },
-            "Newtonsoft.Json.Bson": {
-              "target": "Package",
-              "version": "[1.0.3, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -249,13 +253,13 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
-            "CommunityToolkit.Mvvm": {
-              "target": "Package",
-              "version": "[8.1.0, )"
-            },
             "ImageCropper.Maui": {
               "target": "Package",
               "version": "[1.1.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -271,9 +275,15 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
@@ -288,10 +298,6 @@
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
-            },
-            "Newtonsoft.Json.Bson": {
-              "target": "Package",
-              "version": "[1.0.3, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -335,13 +341,13 @@
               "target": "Package",
               "version": "[4.1.2, )"
             },
-            "CommunityToolkit.Mvvm": {
-              "target": "Package",
-              "version": "[8.1.0, )"
-            },
             "ImageCropper.Maui": {
               "target": "Package",
               "version": "[1.1.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -357,9 +363,15 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
@@ -368,10 +380,6 @@
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
               "version": "[8.0.14, )"
-            },
-            "Newtonsoft.Json.Bson": {
-              "target": "Package",
-              "version": "[1.0.3, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",

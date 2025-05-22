@@ -7,21 +7,18 @@
              Title="Фото">
     <ScrollView>
         <VerticalStackLayout>
-            <!-- Превью камеры -->
             <cv:CameraView x:Name="cameraView" HeightRequest="500"/>
-            <!-- Панель управления -->
-            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Сделать фото" Clicked="TakePhotoButton_Clicked"/>
                 <Button Text="Переключить камеру" Clicked="SwitchCameraButton_Clicked"/>
             </StackLayout>
 
-            <!-- Форма для сохранения -->
-            <Entry x:Name="NameUserData" Placeholder="Введите название"/>
+            <Entry Text="{Binding Name}" Placeholder="Введите название"/>
 
-            <!-- Предпросмотр фото -->
-            <Image x:Name="photoImage" HeightRequest="300" WidthRequest="300"/>
+            <Image Source="{Binding Data}" HeightRequest="300" WidthRequest="300"/>
 
-            <Button Text="Сохранить" Clicked="SaveButton_Clicked"/>
+            <Button Text="Сохранить" x:Name="BtnSave" Clicked="SaveButton_Clicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

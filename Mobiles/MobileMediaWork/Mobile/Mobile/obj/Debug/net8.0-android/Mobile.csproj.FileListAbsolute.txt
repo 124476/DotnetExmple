@@ -102,8 +102,6 @@ C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Castle.Core.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\ca\Microsoft.Maui.Controls.resources.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Com.Vanniktech.AndroidImageCropper.Maui.dll
-C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\CommunityToolkit.Mvvm.dll
-C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\CommunityToolkit.Mvvm.pdb
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\cs\Microsoft.Maui.Controls.resources.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\da\Microsoft.Maui.Controls.resources.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\de\Microsoft.Maui.Controls.resources.dll
@@ -1099,9 +1097,6 @@ C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\ExoPlayer.SmoothStreaming.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\ExoPlayer.Transformer.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\ExoPlayer.UI.dll
-C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Newtonsoft.Json.Bson.dll
-C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Newtonsoft.Json.Bson.pdb
-C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Newtonsoft.Json.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Plugin.Maui.Audio.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Xamarin.AndroidX.Media.dll
 C:\Users\art82\source\repos\WPFExmple\Mobiles\MobileMediaWork\Mobile\Mobile\obj\Debug\net8.0-android\android\assets\Xamarin.AndroidX.Media.pdb
